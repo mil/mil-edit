@@ -156,6 +156,13 @@ var mil_edit = (function() {
         $("#active").remove();
       }
     }
+
+    while (selector.is('ul')) {
+      console.log("selector")
+      selector = $(selector.children().first);
+    }
+
+
     selector.attr("id", "active"); 
     var content = toMarkdown($("#active").html())
     $("#active").html($("<textarea type='text'>"));
@@ -172,21 +179,10 @@ var mil_edit = (function() {
 
   focus.set_delta = function(delta) {
     if (raw) { return; }
-    var nextItem = directional_find("li", $("#active"), delta);
-    if (!nextItem || !nextItem.is("li")) { 
-      if ($("li").size() == 1) { return; }
-      if ($("#active").prev().size() == 0 || $("#active").is("div")) {
-        nextItem = $(selector).children().children().last();
-        if ($(nextItem).is("div")) { return; }
 
-        while(is_editable(nextItem.children().children().last())) { 
-          nextItem = nextItem.children().children().last(); 
-        }
-      } else {
-        nextItem = $(selector).children().children("li").first();
-      }
-    }
-    if (!$(nextItem).is("li") && !$(nextItem).is("ul")) { return; }
+    var nextItem = directional_find("li", $("#active"), delta);
+    if (!nextItem || !nextItem.is("li")) { return; }
+
     focus.set(nextItem);
   };
 
@@ -264,7 +260,7 @@ var mil_edit = (function() {
     }
 
     // If were at the top, give up the first li
-    if (c.is("div")) { return c.children().children().first(); }
+    if (c.is("div")) { return false; }
     if (!c.is("li") && !c.is("ul")) { return false; }
 
     // Let us
@@ -277,6 +273,7 @@ var mil_edit = (function() {
       if (is_editable(c)) { return c; }
       c = (direction == 1) ? c.children().first(tag) : c.children().last(tag);
     }
+
     return $(c).is(tag) ? c : false;
   }
 
