@@ -1,0 +1,21 @@
+Firstly, I want to apologize for any style problems.  This was my first JS project in a long time. As a result I didn't *exactly* know what I was doing. Though I think it came out fine and the code is semi-readable. Feel free to do a re-write or change up my code if you want.
+
+Anyway, with apologies aside: 
+
+mil edit at all times assumes your DOM tree starting from your root selector (#editor by default) looking like:
+- div#editor
+    * ul
+        * li
+            - Some top Level content
+        * li
+            - ul
+                * li
+                    - Second level content
+        * li
+            - More top level content
+
+The critical idea is that sub-lists are not children of the previous item. ul's stand alone. Indentation is a function of an extra wrapper ul li nest.
+
+Zepto is used extensively for maintaining this structure with each operation.
+
+More Questions? Ping me on IRC, mil on irc.freenode.net

@@ -1,0 +1,211 @@
+html body {
+  padding-top: 0;
+  background: #fff;
+  font-size: 14px;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  background: url('../images/linedpaper.png');
+} 
+
+/* ===============
+ * Application
+ * =============== */
+#application {
+  padding: 20px;
+}
+
+h1 { font-size: 60px; }
+
+div#editor { 
+  background: #e0e0e0; 
+  width: 100%;
+}
+
+hr {
+  border: none;
+  height: 4px;
+  display: block;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+}
+
+
+a {
+  text-decoration: none;
+  padding: 0 2px;
+  color: #002ab3;
+  cursor: pointer;
+}
+
+a:hover {
+  color: white;
+  background-color: #002ab3;
+}
+
+
+#active {
+  color: black;
+  background: #e8e8e8;
+  border-top: 1px solid #ffffff;
+  padding-top: 5px; padding-bottom: 5px;
+}
+
+ul {
+	margin: 5px 0;
+  display: block;
+  border: 1px solid #cfcfcf;
+  padding-left: 20px;
+  font-size: 20px;
+  color: #212121;
+	
+}
+li {
+  margin-left: 5px;
+	padding: 5px;
+  padding-left: 20px;
+  border-bottom: 1px dotted #cfcfcf;
+  display: list-item;
+
+  background-color: white;
+
+  border-left: 1px solid #cfcfcf;
+
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+ul { background: #ffffff; }
+ul ul { background: #e0e0e0; };
+
+ul li { font-size: 20px; }
+ul li ul li { font-size: 18px; }
+ul li ul li ul li { font-size: 16px; }
+ul li ul li ul li ul li { font-size: 14px; }
+ul li ul li ul li ul li { font-size: 12px; }
+
+#top-buttons {
+  float: right;
+  padding-top: 30px;
+  text-align: right;
+}
+#top-buttons a { font-size: 15px; text-decoration: none; }
+
+
+strong, b { font-weight: bold; }
+em, i { font-style: italic;}
+
+#hints { clear: both; }
+#hints #mkd { 
+  float: left; 
+}
+#hints #mkd div {
+  padding: 4px 0px;
+}
+
+#hints #functions {
+  float: right;
+  text-align: right;
+  vertical-align: baseline;
+}
+
+#hints #functions div {
+  margin-bottom: 4px;
+
+}
+#hints #functions a {
+  background: white;
+  color: #002ab3;
+
+  border: 1px solid #cfcfcf;
+  display: inline-block;
+  font-size: 14px;
+  padding: 2px 5px;
+  margin: 0 2px;
+  cursor: pointer;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+#hints #functions a:hover {
+  background: #002ab3;
+  color: white;
+}
+
+#hints #functions a.two-keys {
+  background: none !important;
+  border: none !important;
+  margin: 0 !important;
+}
+#hints #functions a.two-keys span {
+  background: none;
+  display: inline-block;
+  background: white;
+  color: #002ab3;
+  border: 1px solid #cfcfcf;
+  padding: 2px 5px;
+
+  margin: 0 2px;
+}
+
+#all {
+  border: none !important;
+  margin-right:  0 !important
+}
+
+#functions div { margin: 5px 0; }
+#functions a:hover span { background: #002abc !important; color: white !important; }
+
+a.func {
+  background: none !important;
+  border: none !important;
+  padding: 2px 2px !important;
+  margin: 0;
+}
+a.func:hover { background: #002abc !important; }
+
+#editor textarea {
+  font-size: 13px;
+  min-height: 300px;
+  width: 100%;
+  border: 1px solid #cecece;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  border-sizing: border-box;
+  -webkit-border-sizing: border-box;
+  padding: 10px 0;
+  background: white;
+  color: black;
+}
+
+#buttons {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+#buttons a {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 0 3px;
+  border: 1px solid #cfcfcf;
+  background: white;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+#buttons a:hover {
+  border: 1px solid #cfcfcf;
+  background-color: #e6e6e6;
+}
+
+#buttons a#undent { margin-left: 0; background-image: url('../images/text_indent_remove.png'); }
+#buttons a#indent { background-image: url('../images/text_indent.png'); }
+#buttons a#up { background-image: url('../images/arrow_up.png'); }
+#buttons a#down { background-image: url('../images/arrow_down.png'); }
+
+
+#buttons a#link { margin-right: 0; float: right; background-image: url('../images/world_link.png'); }
+#buttons a#italic { float: right; background-image: url('../images/text_italic.png'); }
+#buttons a#bold { float: right; background-image: url('../images/text_bold.png'); }

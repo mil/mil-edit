@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>mil edit: a simple markdown list editor</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <script type="text/javascript" src="./js/zepto.min.js"></script>
+    <script type="text/javascript" src="./js/underscore.min.js"></script>
+
+    <script type="text/javascript" src="./js/markdown.js"></script>
+    <script type="text/javascript" src="./js/to-markdown.js"></script>
+
+    <script type="text/javascript" src="./js/mil_edit.js"></script>
+    <script type="text/javascript" src="./js/start_on_load.js"></script>
+  </head>
+  <body>
+    <div id="application">
+      <div id="top-buttons">
+        <a id="mode" onclick="mil_edit.mode()" title="Ctrl-Q">Raw Markdown</a> | <a onclick="mil_edit.clear()" title="Ctrl-Z">Clear</a>
+      </div>
+      <h1>mil edit</h1>
+      <hr/>
+      <div id="buttons">
+        <a id="undent" title="< or Ctrl-&larr;" onclick="mil_edit.undent()"></a>
+        <a id="indent" title="> or Ctrl-&rarr;" onclick="mil_edit.indent()"></a>
+        <a id="up" title="&uarr; or [Shift] [Tab]" onclick="mil_edit.focus(-1)"></a>
+        <a id="down" title="&darr; or [Tab]" onclick="mil_edit.focus(1)"></a>
+
+        <a id="link" title="Ctrl-Y" onclick="mil_edit.link()"></a>
+        <a id="italic" title="Ctrl-I" onclick="mil_edit.italic()"></a>
+        <a id="bold" title="Ctrl-B" onclick="mil_edit.bold()"></a>
+      </div>
+      <div id="editor"></div>
+      <hr/>
+      <div id="hints">
+        <div id="mkd">
+          <div>**<b><a title="Ctrl-B" onclick="mil_edit.bold()" href="#">Bold</a></b>**, _<i><a title="Ctrl-I" onclick="mil_edit.italic()">Italic</a></i>_</div>
+          <div>[<a title="Ctrl-Y" onclick="mil_edit.link()">Link</a>](URL)</div>
+        </div>
+
+        <div id="functions">
+
+          <div><a target="_blank" title="All Keybindings on Github" id="all" href="http://github.com/mil/mil-edit">Keybindings</a></div>
+<div>
+            <a onclick="mil_edit.focus(-1)">&uarr;</a><a onclick="mil_edit.focus(1)">&darr;</a> to <a onclick="mil_edit.focus(1)" class="func">Focus Row</a>
+          </div>
+
+          <div>
+            <a onclick="mil_edit.undent()">&lt;</a><a onclick="mil_edit.indent()">&gt;</a>  to <a class="func" onclick="mil_edit.indent()">Change Indent</a>
+          </div>
+
+                    <div>
+            <a class="two-keys" onclick="mil_edit.shift(-1)"><span>Shift</span><span>&uarr;</span></a><a class="two-keys" onclick="mil_edit.shift(1)"><span>Shift</span><span>&darr;</span></a> to <a class="func" onclick="">Shift Row</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
