@@ -1,6 +1,6 @@
 mil edit
 ========
-[A Live Demo](http://userbound.com/mil-edit)
+[A Live Demo](http://userbound.com/ui/mil-edit)
 
 mil edit is a simple markdown list editor I've been working on. I wanted something different than the WYSIWYG & Dual-pane Markdown options. My main motive was that I only wanted to work with a *single* list.  This is the way I usually take notes and outline my ideas in Markdown.
 
