@@ -109,7 +109,7 @@ var mil_edit = (function() {
     var positive = delta > 0 ? true : false;
     var content = $("#active").html()
     var regexp = new RegExp(positive ? 
-      ("[" + symbol + " ](.)") : ("(.)[" + symbol + "]"));
+      ("[" + symbol + "](.)") : ("(.)[" + symbol + "]"));
 
     _.times(Math.abs(delta), function() {
       var c = content.match(regexp)[1];
