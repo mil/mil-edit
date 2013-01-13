@@ -141,7 +141,7 @@ var mil_edit = (function() {
     cursor.spawn();
   };
 
-  active.focus = function(delta) {
+  focus.set_delta = function(delta) {
     if (raw) { return; }
     var nextItem = directional_find("li", $("#active"), delta == -1 ? -1 : 1);
     if (!nextItem || !nextItem.is("li")) { 
@@ -158,7 +158,7 @@ var mil_edit = (function() {
     active.set(nextItem);
   };
 
-  active.shift = function(delta) {
+  focus.shift = function(delta) {
     if (raw) { return; }
     var nextItem = directional_find("li", $("#active"), delta == -1 ? -1 : 1);
     if (!nextItem.is("li")) { return false; }
@@ -271,7 +271,7 @@ var mil_edit = (function() {
 
 
   function new_brother() { $("<li></li>").insertAfter("#active"); }
-  function delete_above() { active.focus(-1); clean_tree(); }
+  function delete_above() { focus.set_delta(-1); clean_tree(); }
   function insert_below() { new_brother(); active.set($("#active").next()); }
   /* Find the next insertable node to focus
   * in previous(0)/next(1) directions 
@@ -408,15 +408,15 @@ var mil_edit = (function() {
 
     // Tab
     if (k.keyCode == 9) {
-      k.shiftKey ? active.focus(-1) : active.focus(1); return false; 
+      k.shiftKey ? focus.set_delta(-1) : focus.set_delta(1); return false; 
     }
 
     // Arrows up and down
     if (k.keyCode == 38) {
-      k.shiftKey ?  active.shift(-1) : active.focus(-1); return false;
+      k.shiftKey ?  focus.shift(-1) : focus.set_delta(-1); return false;
     }
     if (k.keyCode == 40) {
-      k.shiftKey ?  active.shift(1) : active.focus(1); return false;
+      k.shiftKey ?  focus.shift(1) : focus.set_delta(1); return false;
     }
 
     // Enter
@@ -490,23 +490,22 @@ var mil_edit = (function() {
   * Public Functions 
   * ====================================== */
   return {
-    /* Vars */
     mode: mode,
 
+    // md/cursor inserts
     bold : bold,
     italic : italic,
     link : link,
 
+    // line manipulation
     indent : focus.indent,
     undent : focus.undent,
-    focus: active.focus,
-    shift: active.shift,
+    focus  : focus.set_delta,
+    shift  : focus.shift,
 
     dump_markdown : dump_markdown,
     load_markdown : load_markdown,
 
-
-    /* For Submodules */
     initialize : initialize,
     clear: clear 
   }
