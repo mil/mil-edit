@@ -108,7 +108,8 @@ var mil_edit = (function() {
     if (delta == 0) { return; }
     var positive = delta > 0 ? true : false;
     var content = $("#active").html()
-    var regexp = new RegExp(positive ? "[" + symbol + " ](.)" : "(.)[" + symbol + "]");
+    var regexp = new RegExp(positive ? 
+      ("[" + symbol + " ](.)") : ("(.)[" + symbol + "]"));
 
     _.times(Math.abs(delta), function() {
       var c = content.match(regexp)[1];
