@@ -51,13 +51,11 @@ a:hover {
 
 #active textarea {
   width: 100%;
-  height: 20px;
   background: none;
   border: none;
   outline: none !important;
-  font-size: 14px;
-  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-
+  font-family: inherit;
+  font-size: inherit;
 }
 
 ul {
@@ -94,6 +92,8 @@ ul li ul li { font-size: 18px; }
 ul li ul li ul li { font-size: 16px; }
 ul li ul li ul li ul li { font-size: 14px; }
 ul li ul li ul li ul li { font-size: 12px; }
+
+
 
 #top-buttons {
   float: right;
