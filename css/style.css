@@ -46,7 +46,17 @@ a:hover {
   color: black;
   background: #e8e8e8;
   border-top: 1px solid #ffffff;
-  padding-top: 5px; padding-bottom: 5px;
+  padding-right: 20px;
+}
+
+#active textarea {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none !important;
+  font-size: 13px;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+
 }
 
 ul {
@@ -166,18 +176,6 @@ a.func {
 }
 a.func:hover { background: #002abc !important; }
 
-#editor textarea {
-  font-size: 13px;
-  min-height: 300px;
-  width: 100%;
-  border: 1px solid #cecece;
-  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-  border-sizing: border-box;
-  -webkit-border-sizing: border-box;
-  padding: 10px 0;
-  background: white;
-  color: black;
-}
 
 #buttons {
   -webkit-user-select: none;

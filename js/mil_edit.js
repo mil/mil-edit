@@ -95,55 +95,28 @@ var mil_edit = (function() {
     return ret;
   };
 
-  /* =================================
-  * Cursor Object, set by Active line 
-  * ================================== */
-  var cursor = new Object();
-  cursor.spawn = function() {
-    if ($("#active").size() != 0) {
-      $("#active").append(symbol);
-    }
-  };
-  cursor.position = function(delta) {
-    if (delta == 0) { return; }
-    var positive = delta > 0 ? true : false;
-    var content = $("#active").html()
-    var regexp = new RegExp(positive ? 
-      ("[" + symbol + "](.)") : ("(.)[" + symbol + "]"));
-
-    _.times(Math.abs(delta), function() {
-      var c = content.match(regexp)[1];
-      content = content.replace(regexp, positive ? c + symbol : symbol + c);
-    });
-
-    $("#active").html(content);
-  };
-
-
-
   /* ==========================
   * Focus Object (tracks focused line)
   * =========================== */
   var focus = new Object();
   focus.set = function(selector) {  
     if ($("#active").size() != 0) {
-      var content = $("#active").html();
-      content = (content.length == 1) ?  "" : content.replace(symbol, "");
-      $("#active").html(content);
-
-      if (content != "") { $("#active").html($(markdown.toHTML(content)).html()); }
+      var content = $("#active").children("textarea").val();
+      if (content != "") { 
+        $("#active").html($(markdown.toHTML(content)).html()); 
+      }
       $("#active").removeAttr("id");
     }
     selector.attr("id", "active"); 
-    var content = $("#active").html();
-    $("#active").html(toMarkdown(content));
-
-    cursor.spawn();
+    var content = toMarkdown($("#active").html())
+    $("#active").html($("<textarea type='text'>"));
+    $("#active").children("textarea").val(content);
+    $("#active").children("textarea").focus();
   };
 
   focus.set_delta = function(delta) {
     if (raw) { return; }
-    var nextItem = directional_find("li", $("#active"), delta == -1 ? -1 : 1);
+    var nextItem = directional_find("li", $("#active"), delta);
     if (!nextItem || !nextItem.is("li")) { 
       if ($("li").size() == 1) { return; }
       if ($("#active").prev().size() == 0 || $("#active").is("div")) {
@@ -211,10 +184,14 @@ var mil_edit = (function() {
     var c = origin; 
     var s = direction == 1 ? c.next().size() : c.prev().size();
 
-    if (s == 0) { while (s == 0) {
-      c = c.parent();
-      s = direction == 1 ? c.next().size() : c.prev().size();
-    } }
+    if (s == 0) { 
+      while (s == 0) {
+        c = c.parent();
+        s = direction == 1 ? c.next().size() : c.prev().size();
+      } 
+    }
+
+    if (!c.is("li") && !c.is("ul")) { return false; }
 
     c = direction == 1 ? c.next() : c.prev();
     while (c.children(tag).size() != 0 ) {
@@ -330,26 +307,20 @@ var mil_edit = (function() {
 
   event_handlers.backspace = function(k) {
     if (k.shiftKey) { 
-      if ($("#active").text() == symbol) {
-        delete_above();
-      } else {
-        $("#active").text(symbol); 
-      }
-      return; 
+      if ($("#active").children("input").val() == "") {
+        delete_above(); return false;
+      } else { return true; }
     }
-    if ($("#active").text() == symbol && $(selector).children().children().size() > 1) { 
+    if ($("#active").text() == "" && $(selector).children().children().size() > 1) { 
       if ($("#active").parent().parent().is("div")) {
         delete_above(); 
       } else {
         focus.undent();
       }
-    return; }
-
-    if ($("#active").html().indexOf(symbol) != 0) {
-      var orig = $("#active").html();
-      var mod = remove_at(orig, orig.indexOf(symbol) -1);
-      $("#active").html(mod);
+      return; 
     }
+
+    return true; // Default backspace
   }
 
   event_handlers.handle_special = function(k) {
@@ -387,7 +358,7 @@ var mil_edit = (function() {
     );
 
     if ($.inArray(k.keyCode, throughKeys) != -1) {
-      insert(String.fromCharCode(key));
+      return false;
     }
   };
 
@@ -398,7 +369,7 @@ var mil_edit = (function() {
     clean_tree();  
 
     // Backspace
-    if (k.keyCode == 46 || k.keyCode == 8) { event_handlers.backspace(k); return; }
+    if (k.keyCode == 46 || k.keyCode == 8) { return event_handlers.backspace(k); }
 
     // Shifting with ><
     if (k.shiftKey) {
@@ -466,6 +437,7 @@ var mil_edit = (function() {
     $(document).on('keydown', event_handlers.key_down);
     $(document).on('mousedown', "li", function (e) {
       if ($(e.target).is("a")) { return true; }
+      if ($(e.target).is("input")) { return true; }
       var t = $(e.target);
       if (t.is("strong") || t.is("em")) { 
         t = t.parent(); 
@@ -476,6 +448,7 @@ var mil_edit = (function() {
         }
       }
       focus.set(t); clean_tree();
+      return false;
     });
   }
 
@@ -502,6 +475,8 @@ var mil_edit = (function() {
     undent : focus.undent,
     focus  : focus.set_delta,
     shift  : focus.shift,
+
+    directional_find : directional_find,
 
     dump_markdown : dump_markdown,
     load_markdown : load_markdown,
