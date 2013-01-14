@@ -2,7 +2,6 @@ var mil_edit = (function() {
   var selector = "#editor";
   var raw = false;
   var content  = "";
-  var symbol = "|";
 
   /* ===================
   * Helper Functions
@@ -88,7 +87,7 @@ var mil_edit = (function() {
         var pre = "";
         _.times(level * tabSize, function () { pre = pre + " "; });
         pre += (level % 2 === 0) ?  "- " : "* ";
-        var text = $(l).html().replace(symbol, "");
+        var text = $(l).html();
         ret += pre + toMarkdown(text) + "\n";
       }
     });
@@ -99,19 +98,40 @@ var mil_edit = (function() {
   * Focus Object (tracks focused line)
   * =========================== */
   var focus = new Object();
+  focus.set_cursor_position = function(position) {
+    console.log("Setting cursor pos");
+    var field = $("#active textarea")[0];
+    if (field.createTextRange) {
+      var range = field.createTextRange();
+      range.move('character', position);
+      range.select();
+    } else {
+      field.focus();
+      if (field.selectionStart != undefined) {
+        field.setSelectionRange(position, position);
+      }
+    }
+  }
+
+  focus.position_cursor = function(delta) {
+  }
+
   focus.set = function(selector) {  
     if ($("#active").size() != 0) {
       var content = $("#active").children("textarea").val();
       if (content != "") { 
         $("#active").html($(markdown.toHTML(content)).html()); 
+        $("#active").removeAttr("id");
+      } else {
+        $("#active").remove();
       }
-      $("#active").removeAttr("id");
     }
     selector.attr("id", "active"); 
     var content = toMarkdown($("#active").html())
     $("#active").html($("<textarea type='text'>"));
-    $("#active").children("textarea").val(content);
-    $("#active").children("textarea").focus();
+    $("#active textarea").val(content);
+    focus.set_cursor_position(10000);
+    $("#active textarea")[0].focus();
   };
 
   focus.set_delta = function(delta) {
@@ -152,7 +172,9 @@ var mil_edit = (function() {
     /* Ensure not at start of list */
     if ($("#active").prev().size() == 0) { return; }
     $("#active").wrap("ul").parent().wrap("li");
+
     clean_tree();
+    $("#active textarea")[0].focus();
   }
 
   focus.undent = function() {
@@ -178,6 +200,7 @@ var mil_edit = (function() {
     $("#active").after($("<li>").append(halfB));
 
     clean_tree();
+    $("#active textarea")[0].focus();
   }
 
   function directional_find(tag, origin, direction) {
@@ -256,7 +279,7 @@ var mil_edit = (function() {
 
   function insert(c) { 
     var old = $("#active").html();
-    $("#active").html(old.replace(symbol, c + symbol));
+    //$("#active").html(old.replace(symbol, c + symbol));
   }
 
 
@@ -307,17 +330,17 @@ var mil_edit = (function() {
 
   event_handlers.backspace = function(k) {
     if (k.shiftKey) { 
-      if ($("#active").children("input").val() == "") {
+      if ($("#active").children("textarea").val() == "") {
         delete_above(); return false;
       } else { return true; }
     }
-    if ($("#active").text() == "" && $(selector).children().children().size() > 1) { 
+    if ($("#active").children("textarea").val() == "" && $(selector).children().children().size() > 1) { 
       if ($("#active").parent().parent().is("div")) {
         delete_above(); 
       } else {
         focus.undent();
       }
-      return; 
+      return false; 
     }
 
     return true; // Default backspace
@@ -373,8 +396,8 @@ var mil_edit = (function() {
 
     // Shifting with ><
     if (k.shiftKey) {
-      if (k.keyCode == 190) { focus.indent(); return; }
-      if (k.keyCode == 188) { focus.undent(); return; }
+      if (k.keyCode == 190) { focus.indent(); return false; }
+      if (k.keyCode == 188) { focus.undent(); return false; }
     }
 
     // Tab
@@ -399,11 +422,8 @@ var mil_edit = (function() {
       }
       clean_tree();
 
-      return;
+      return false;
     }
-
-    // Space
-    if (k.keyCode == 32) { event_handlers.handle_single_key(k); return false; }
 
     // Undent
     if (k.keyCode == 37) {
@@ -437,7 +457,7 @@ var mil_edit = (function() {
     $(document).on('keydown', event_handlers.key_down);
     $(document).on('mousedown', "li", function (e) {
       if ($(e.target).is("a")) { return true; }
-      if ($(e.target).is("input")) { return true; }
+      if ($(e.target).is("textarea")) { return true; }
       var t = $(e.target);
       if (t.is("strong") || t.is("em")) { 
         t = t.parent(); 
