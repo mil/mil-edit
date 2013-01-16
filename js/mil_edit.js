@@ -98,8 +98,7 @@ var mil_edit = (function() {
   * Focus Object (tracks focused line)
   * =========================== */
   var focus = new Object();
-  focus.set_cursor_position = function(position) {
-    console.log("Setting cursor pos");
+  focus.position_cursor =  function(position) {
     var field = $("#active textarea")[0];
     if (field.createTextRange) {
       var range = field.createTextRange();
@@ -113,21 +112,18 @@ var mil_edit = (function() {
     }
   }
 
+  focus.position_cursor_delta = function(delta) {
+    focus.position_cursor(
+      $("#active textarea")[0].selectionStart + delta
+    );
+  }
+
   focus.adjust_rows = function() {
     console.log("Adjusting Rows");
     var f = $("#active textarea");
-    f.height(0);
-    while (f[0].scrollHeight > f[0].clientHeight) {
-      f.attr("rows", parseInt(f.attr("rows")) + 1);
-    }
-    console.log(f[0].scrollHeight);
-    console.log(f[0].clientHeight);
-    while (f[0].scrollHeight < f[0].clientHeight) {
-      f.attr("rows", parseInt(f.attr("rows")) - 1);
-    }
-  }
-
-  focus.position_cursor = function(delta) {
+    f.css("overflow", "hidden");
+    f.height("1px");
+    f.height(f[0].scrollHeight + "px");
   }
 
   focus.set = function(selector) {  
@@ -145,7 +141,7 @@ var mil_edit = (function() {
     $("#active").html($("<textarea type='text'>"));
     $("#active textarea").attr("rows", "1");
     $("#active textarea").val(content);
-    focus.set_cursor_position(10000);
+    focus.position_cursor(10000);
     $("#active textarea")[0].focus();
     focus.adjust_rows();
   };
@@ -294,8 +290,11 @@ var mil_edit = (function() {
   */
 
   function insert(c) { 
-    var old = $("#active").html();
-    //$("#active").html(old.replace(symbol, c + symbol));
+    var old = $("#active textarea").val();
+    var cursor = $("#active textarea")[0].selectionStart;
+    
+    $("#active textarea").val(insert_at(old, cursor, c));
+    focus.position_cursor_delta(c.length);
   }
 
 
@@ -334,9 +333,9 @@ var mil_edit = (function() {
   * In Text Markdown Insertion
   * ===================== */
 
-  function bold() { insert("****"); cursor.position(-2); }
-  function italic() { insert("__"); cursor.position(-1); }
-  function link() { insert("[]()"); cursor.position(-3); }
+  function bold() { insert("****"); focus.position_cursor_delta(-2); }
+  function italic() { insert("__"); focus.position_cursor_delta(-1); }
+  function link() { insert("[]()"); focus.position_cursor_delta(-3); }
 
 
   /* ===================
@@ -442,14 +441,9 @@ var mil_edit = (function() {
       return false;
     }
 
-    // Undent
-    if (k.keyCode == 37) {
-      k.shiftKey ? focus.undent() : cursor.position(-1);  return;
-    }
-
-    if (k.keyCode == 39) {
-      k.shiftKey ? focus.indent() : cursor.position(1);  return;
-    }
+    // Undent and Indent with arrow keys
+    if (k.keyCode == 37 && k.shiftKey) { focus.undent(); }
+    if (k.keyCode == 39 && k.shiftKey) { focus.indent(); }
 
     // Control combos
     if (k.ctrlKey) {
@@ -513,8 +507,6 @@ var mil_edit = (function() {
     undent : focus.undent,
     focus  : focus.set_delta,
     shift  : focus.shift,
-
-    directional_find : directional_find,
 
     dump_markdown : dump_markdown,
     load_markdown : load_markdown,
