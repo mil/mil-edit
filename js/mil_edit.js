@@ -82,6 +82,9 @@ var mil_edit = (function() {
 
     var ret = "";
     _.each($(selector + " li"), function (l) {
+      if ($(l).attr("id") == "active") {
+        $(l).html(markdown.toHTML($("#active textarea").val()));
+      }
       var level = $(l).parents("ul").size() -1;
       if ($(l).children("ul").size() == 0) {
         var pre = "";
@@ -310,7 +313,7 @@ var mil_edit = (function() {
   function mode() {
     if (!raw) {
       var markdown = dump_markdown();
-      $(selector).children().first().replaceWith("<textarea>");
+      $(selector).children().first().replaceWith("<textarea id='raw'>");
       $(selector).children().first().val(markdown);
       $("#buttons").css('display', 'none');
       $("#functions").css('display', 'none');

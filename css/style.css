@@ -20,6 +20,7 @@ div#editor {
   width: 100%;
 }
 
+
 hr {
   border: none;
   height: 4px;
@@ -63,6 +64,8 @@ a:hover {
   padding-bottom: 0;
   line-height: 1.3em;
   resize: none;
+  word-wrap: break-word;
+  white-space:pre;
 }
 
 ul {
@@ -184,6 +187,21 @@ a.func {
 }
 a.func:hover { background: #002abc !important; }
 
+#editor textarea#raw {
+  font-size: 13px;
+  min-height: 300px;
+  width: 100%;
+  border: 1px solid #cecece;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  border-sizing: border-box;
+  -webkit-border-sizing: border-box;
+  padding: 10px 0;
+  background: white;
+  color: black;
+}
+
+
+
 
 #buttons {
   -webkit-user-select: none;
@@ -215,3 +233,5 @@ a.func:hover { background: #002abc !important; }
 #buttons a#link { margin-right: 0; float: right; background-image: url('../images/world_link.png'); }
 #buttons a#italic { float: right; background-image: url('../images/text_italic.png'); }
 #buttons a#bold { float: right; background-image: url('../images/text_bold.png'); }
+
+
