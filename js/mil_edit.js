@@ -365,11 +365,10 @@ var mil_edit = (function() {
     if (k.keyCode == 81 && k.ctrlKey) { mode(); return; } 
     if (raw) { return; }
 
-    clean_tree();  
-
     // Backspace
     if (k.keyCode == 46 || k.keyCode == 8) { 
-      event_handlers.backspace(k); }
+    return event_handlers.backspace(k); 
+    }
 
     // Shifting with ><
     if (k.shiftKey) {
@@ -411,8 +410,8 @@ var mil_edit = (function() {
       switch (k.keyCode) {
       case 73: italic(); return;
       case 66: bold(); return;
-      case 88: clear(); return;
       case 89: link(); return;
+      case 88: clear(); return;
       }
     }
 
@@ -427,7 +426,7 @@ var mil_edit = (function() {
   * ===================== */
   function setup_bindings() {
     $(document).on('keydown', event_handlers.key_down);
-    $(document).on('keyup', focus.adjust_rows);
+    $(document).on('keyup', function() { clean_tree(); focus.adjust_rows()});
     $(document).on('mousedown', "li", function (e) {
       if ($(e.target).is("a")) { return true; }
       if ($(e.target).is("textarea")) { return true; }
@@ -476,4 +475,3 @@ var mil_edit = (function() {
     clear: clear 
   }
 }());
-
