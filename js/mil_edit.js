@@ -122,7 +122,7 @@ var mil_edit = (function() {
     console.log("Adjusting Rows");
     var f = $("#active textarea");
     f.css("overflow", "hidden");
-    f.height("1px");
+    f.height("30px");
     f.height(f[0].scrollHeight + "px");
   }
 

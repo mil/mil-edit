@@ -47,7 +47,9 @@ a:hover {
   background: #e8e8e8;
   border-top: 1px solid #ffffff;
   padding-right: 20px;
-  padding-bottom: 0;
+  padding-bottom: -5px;;
+  padding-top: 8px;
+  line-height: 0;
 }
 
 #active textarea {
@@ -58,7 +60,8 @@ a:hover {
   font-family: inherit;
   font-size: inherit;
   margin-bottom: 0;
-  padding-bottom: 3px;
+  padding-bottom: 0;
+  line-height: 1.3em;
   resize: none;
 }
 
