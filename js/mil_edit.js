@@ -361,45 +361,6 @@ var mil_edit = (function() {
     return true; // Default backspace
   }
 
-  event_handlers.handle_special = function(k) {
-    var specialMap = { 
-      219 : "[", 221 : "]", 222 : "'", 186 : ";", 191 : "/", 188: ",", 190: "."
-    };
-    var symbolMap = {
-      49: "!", 50: "@", 51: "#", 52: "$", 53: "%", 54: "^", 55: "&", 56: "*", 
-      57: "(", 48: ")", 189 : "_", 219: "{", 221: "}", 186: ":", 191: "?",
-      222 : '"'
-    };
-
-    if (k.shiftKey && symbolMap[k.keyCode] != undefined) {
-      insert(symbolMap[k.keyCode]); return true;
-    } else if (specialMap[k.keyCode] != undefined) {
-      insert(specialMap[k.keyCode]); return true;
-    }
-    return false;
-  }
-
-  event_handlers.handle_single_key = function(k) {
-    /* Convert keycode to lowercase */
-    var key = k.keyCode;
-    if (($.inArray(key,_.range(65,91)) != -1) && !(k.shiftKey)) {
-      key += 32;
-    }
-
-    if (event_handlers.handle_special(k)) { return; }
-
-    var throughKeys = _.union(
-      _.range(65,91), // Caps Alphabet
-      _.range(97,123), // Lower Alphabet
-      _.range(41,58),
-      [ 32, 64, 219, 221 ]
-    );
-
-    if ($.inArray(k.keyCode, throughKeys) != -1) {
-      return false;
-    }
-  };
-
   event_handlers.key_down = function(k) {
     if (k.keyCode == 81 && k.ctrlKey) { mode(); return; } 
     if (raw) { return; }
@@ -455,8 +416,7 @@ var mil_edit = (function() {
       }
     }
 
-    event_handlers.handle_single_key(k);
-    focus.adjust_rows(); 
+    return true;
   };
 
 
@@ -467,6 +427,7 @@ var mil_edit = (function() {
   * ===================== */
   function setup_bindings() {
     $(document).on('keydown', event_handlers.key_down);
+    $(document).on('keyup', focus.adjust_rows);
     $(document).on('mousedown', "li", function (e) {
       if ($(e.target).is("a")) { return true; }
       if ($(e.target).is("textarea")) { return true; }
