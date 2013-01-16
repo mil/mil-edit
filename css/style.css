@@ -47,6 +47,7 @@ a:hover {
   background: #e8e8e8;
   border-top: 1px solid #ffffff;
   padding-right: 20px;
+  padding-bottom: 0;
 }
 
 #active textarea {
@@ -56,6 +57,9 @@ a:hover {
   outline: none !important;
   font-family: inherit;
   font-size: inherit;
+  margin-bottom: 0;
+  padding-bottom: 3px;
+  resize: none;
 }
 
 ul {

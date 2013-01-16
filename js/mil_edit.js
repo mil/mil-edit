@@ -113,6 +113,20 @@ var mil_edit = (function() {
     }
   }
 
+  focus.adjust_rows = function() {
+    console.log("Adjusting Rows");
+    var f = $("#active textarea");
+    f.height(0);
+    while (f[0].scrollHeight > f[0].clientHeight) {
+      f.attr("rows", parseInt(f.attr("rows")) + 1);
+    }
+    console.log(f[0].scrollHeight);
+    console.log(f[0].clientHeight);
+    while (f[0].scrollHeight < f[0].clientHeight) {
+      f.attr("rows", parseInt(f.attr("rows")) - 1);
+    }
+  }
+
   focus.position_cursor = function(delta) {
   }
 
@@ -129,9 +143,11 @@ var mil_edit = (function() {
     selector.attr("id", "active"); 
     var content = toMarkdown($("#active").html())
     $("#active").html($("<textarea type='text'>"));
+    $("#active textarea").attr("rows", "1");
     $("#active textarea").val(content);
     focus.set_cursor_position(10000);
     $("#active textarea")[0].focus();
+    focus.adjust_rows();
   };
 
   focus.set_delta = function(delta) {
@@ -392,7 +408,8 @@ var mil_edit = (function() {
     clean_tree();  
 
     // Backspace
-    if (k.keyCode == 46 || k.keyCode == 8) { return event_handlers.backspace(k); }
+    if (k.keyCode == 46 || k.keyCode == 8) { 
+      event_handlers.backspace(k); }
 
     // Shifting with ><
     if (k.shiftKey) {
@@ -445,6 +462,7 @@ var mil_edit = (function() {
     }
 
     event_handlers.handle_single_key(k);
+    focus.adjust_rows(); 
   };
 
 
@@ -505,3 +523,4 @@ var mil_edit = (function() {
     clear: clear 
   }
 }());
+
