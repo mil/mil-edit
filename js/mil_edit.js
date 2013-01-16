@@ -141,10 +141,14 @@ var mil_edit = (function() {
     $("#active").html($("<textarea type='text'>"));
     $("#active textarea").attr("rows", "1");
     $("#active textarea").val(content);
-    focus.position_cursor(10000);
-    $("#active textarea")[0].focus();
-    focus.adjust_rows();
+    focus.browser_focus_reset();
   };
+
+  focus.browser_focus_reset = function() {
+    focus.position_cursor(10000);
+    focus.adjust_rows();
+    $("#active textarea")[0].focus();
+  }
 
   focus.set_delta = function(delta) {
     if (raw) { return; }
@@ -176,6 +180,8 @@ var mil_edit = (function() {
     }
 
     clean_tree();
+
+    focus.browser_focus_reset();
   };
 
   focus.indent = function() {
