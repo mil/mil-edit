@@ -122,7 +122,6 @@ var mil_edit = (function() {
   }
 
   focus.adjust_rows = function() {
-    console.log("Adjusting Rows");
     var f = $("#active textarea");
     f.css("overflow", "hidden");
     f.height("30px");
@@ -161,7 +160,10 @@ var mil_edit = (function() {
       if ($("#active").prev().size() == 0 || $("#active").is("div")) {
         nextItem = $(selector).children().children().last();
         if ($(nextItem).is("div")) { return; }
-        while(!is_editable(nextItem)) { nextItem = nextItem.children().children().last(); }
+
+        while(is_editable(nextItem.children().children().last())) { 
+          nextItem = nextItem.children().children().last(); 
+        }
       } else {
         nextItem = $(selector).children().children("li").first();
       }
@@ -229,12 +231,12 @@ var mil_edit = (function() {
     var s = direction == 1 ? c.next().size() : c.prev().size();
 
     if (s == 0) { 
-      while (s == 0) {
+      do {
         c = c.parent();
         s = direction == 1 ? c.next().size() : c.prev().size();
-      } 
+      } while (s == 0);
     }
-
+    if (c.is("div")) { return c.children().children().first(); }
     if (!c.is("li") && !c.is("ul")) { return false; }
 
     c = direction == 1 ? c.next() : c.prev();
@@ -376,7 +378,7 @@ var mil_edit = (function() {
 
     // Backspace
     if (k.keyCode == 46 || k.keyCode == 8) { 
-    return event_handlers.backspace(k); 
+      return event_handlers.backspace(k); 
     }
 
     // Shifting with ><
