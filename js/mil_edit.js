@@ -124,7 +124,7 @@ var mil_edit = (function() {
   focus.adjust_rows = function() {
     var f = $("#active textarea");
     f.css("overflow", "hidden");
-    f.height("30px");
+    f.height("18px");
     f.height(f[0].scrollHeight + "px");
   }
 
@@ -228,25 +228,29 @@ var mil_edit = (function() {
 
   function directional_find(tag, origin, direction) {
     var c = origin; 
-    var s = direction == 1 ? c.next().size() : c.prev().size();
+    var s = (direction == 1) ? c.next().size() : c.prev().size();
 
+    // Search up the tree until we can go next/prev
     if (s == 0) { 
       do {
         c = c.parent();
         s = direction == 1 ? c.next().size() : c.prev().size();
       } while (s == 0);
     }
+
+    // If were at the top, give up the first li
     if (c.is("div")) { return c.children().children().first(); }
     if (!c.is("li") && !c.is("ul")) { return false; }
 
+    // Let us
     c = direction == 1 ? c.next() : c.prev();
     while (c.children(tag).size() != 0 ) {
-      c = direction == 1 ? c.children(tag).first() : c.children(tag).prev();
+      c = (direction == 1) ? c.children(tag).first() : c.children(tag).last();
     }
 
     while (c.children().size() > 0) {
       if (is_editable(c)) { return c; }
-      c = (direction == -1) ? c.children().last(tag) : c.children().first(tag);
+      c = (direction == 1) ? c.children().first(tag) : c.children().last(tag);
     }
     return $(c).is(tag) ? c : false;
   }
@@ -293,7 +297,7 @@ var mil_edit = (function() {
   }
 
 
-  function new_brother() { $("<li></li>").insertAfter("#active"); }
+  function new_brother() { $("<li>").insertAfter("#active"); }
   function delete_above() { focus.set_delta(-1); clean_tree(); }
   function insert_below() { new_brother(); focus.set($("#active").next()); }
   /* Find the next insertable node to focus
@@ -429,16 +433,7 @@ var mil_edit = (function() {
     return true;
   };
 
-
-
-
-  /* ===================
-  * It's Alive
-  * ===================== */
-  function setup_bindings() {
-    $(document).on('keydown', event_handlers.key_down);
-    $(document).on('keyup', function() { clean_tree(); focus.adjust_rows()});
-    $(document).on('mousedown', "li", function (e) {
+  event_handlers.mouse_down = function(e) {
       if ($(e.target).is("a")) { return true; }
       if ($(e.target).is("textarea")) { return true; }
       var t = $(e.target);
@@ -452,8 +447,19 @@ var mil_edit = (function() {
       }
       focus.set(t); clean_tree();
       return false;
-    });
-  }
+  };
+
+
+
+
+  /* ===================
+  * It's Alive
+  * ===================== */
+  function setup_bindings() {
+    $(document).on('keydown', event_handlers.key_down);
+    $(document).on('keyup', function() { clean_tree(); focus.adjust_rows()});
+    $(document).on('mousedown', "li", event_handlers.mouse_down);
+     }
 
   function initialize() {
     setup_bindings();
