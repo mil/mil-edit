@@ -434,22 +434,20 @@ var mil_edit = (function() {
   };
 
   event_handlers.mouse_down = function(e) {
-      if ($(e.target).is("a")) { return true; }
-      if ($(e.target).is("textarea")) { return true; }
-      var t = $(e.target);
-      if (t.is("strong") || t.is("em")) { 
-        t = t.parent(); 
-      } else {
-        while (t.children().size() != 0) {
-          if (is_editable(t)) { break; }
-          t = t.children().first();
-        }
+    var t = $(e.target);
+    if ($(t).is("a") || $(t).is("textarea")) { return true; }
+
+    if (t.is("strong") || t.is("em")) { 
+      t = t.parent();
+    }  else {
+      while (t.children().size() != 0) {
+        if (is_editable(t)) { break; }
+        t = t.children().first();
       }
-      focus.set(t); clean_tree();
-      return false;
+    }
+    focus.set(t); clean_tree();
+    return false;
   };
-
-
 
 
   /* ===================
@@ -484,6 +482,7 @@ var mil_edit = (function() {
     undent : focus.undent,
     focus  : focus.set_delta,
     shift  : focus.shift,
+
 
     dump_markdown : dump_markdown,
     load_markdown : load_markdown,
