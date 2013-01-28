@@ -20,8 +20,8 @@ div#editor {
 }
 
 div#editor #buttons {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
   background: white;
   margin-bottom: -5px;
   padding-top: 5px;
