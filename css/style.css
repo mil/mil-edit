@@ -16,8 +16,18 @@ html body {
 h1 { font-size: 60px; }
 
 div#editor { 
-  background: #e0e0e0; 
   width: 100%;
+}
+
+div#editor #buttons {
+  padding-left: 10px;
+  padding-right: 10px;
+  background: white;
+  margin-bottom: -5px;
+  padding-top: 5px;
+  border-left: 1px solid #cfcfcf;
+  border-top: 1px solid #cfcfcf;
+  border-right: 1px solid #cfcfcf;
 }
 
 
@@ -207,15 +217,28 @@ a.func:hover { background: #002abc !important; }
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+
+  text-align: center;
+  clear: both;
+  overflow: hidden;
 }
+
+#buttons .center {
+  height: 25px;
+  display: inline-block;
+}
+
+#buttons .left { float: left; display: inline-block; }
+#buttons .right { float: right; display: inline-block; }
+
 #buttons a {
   display: inline-block;
-  width: 30px;
-  height: 30px;
-  margin: 0 3px;
-  border: 1px solid #cfcfcf;
+  width: 20px;
+  height: 20px;
+  margin: 0 0px;
   background: white;
   background-position: center center;
+  border: 1px solid white;
   background-repeat: no-repeat;
 }
 

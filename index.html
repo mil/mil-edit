@@ -23,17 +23,24 @@
       </div>
       <h1>mil edit</h1>
       <hr/>
-      <div id="buttons">
-        <a id="undent" title="< or Ctrl-&larr;" onclick="mil_edit.undent()"></a>
-        <a id="indent" title="> or Ctrl-&rarr;" onclick="mil_edit.indent()"></a>
-        <a id="up" title="&uarr; or [Shift] [Tab]" onclick="mil_edit.focus(-1)"></a>
-        <a id="down" title="&darr; or [Tab]" onclick="mil_edit.focus(1)"></a>
+      <div id="editor">
+        <div id="buttons">
+          <div class="left">
+          <a id="undent" title="< or Ctrl-&larr;" onclick="mil_edit.undent()"></a>
+          <a id="indent" title="> or Ctrl-&rarr;" onclick="mil_edit.indent()"></a>
+        
+        </div>
 
-        <a id="link" title="Ctrl-Y" onclick="mil_edit.link()"></a>
-        <a id="italic" title="Ctrl-I" onclick="mil_edit.italic()"></a>
-        <a id="bold" title="Ctrl-B" onclick="mil_edit.bold()"></a>
+          <div class="right">
+          <a id="italic" title="Ctrl-I" onclick="mil_edit.italic()"></a>
+          <a id="bold" title="Ctrl-B" onclick="mil_edit.bold()"></a>
+
+          <a id="link" title="Ctrl-Y" onclick="mil_edit.link()"></a>
+        </div>
       </div>
-      <div id="editor"></div>
+
+        <div id="list"></div>
+      </div>
       <hr/>
       <div id="hints">
         <div id="mkd">

@@ -1,5 +1,6 @@
 var mil_edit = (function() {
-  var selector = "#editor";
+  var root = "#editor";
+  var selector = root + " #list";
   var raw = false;
   var content  = "";
 
@@ -463,6 +464,7 @@ var mil_edit = (function() {
     setup_bindings();
     $(selector).html($("<ul>").append("<li>"));
     focus.set($(selector + " li").first());
+
   }
 
 
