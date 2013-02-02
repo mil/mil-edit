@@ -26,44 +26,21 @@
       <div id="editor">
         <div id="buttons">
           <div class="left">
-          <a id="undent" title="< or Ctrl-&larr;" onclick="mil_edit.undent()"></a>
-          <a id="indent" title="> or Ctrl-&rarr;" onclick="mil_edit.indent()"></a>
-        
-        </div>
+            <a id="undent" title="< or Ctrl-&larr;" onclick="mil_edit.undent()"></a>
+            <a id="indent" title="> or Ctrl-&rarr;" onclick="mil_edit.indent()"></a>
+
+          </div>
 
           <div class="right">
-          <a id="italic" title="Ctrl-I" onclick="mil_edit.italic()"></a>
-          <a id="bold" title="Ctrl-B" onclick="mil_edit.bold()"></a>
+            <a id="italic" title="Ctrl-I" onclick="mil_edit.italic()"></a>
+            <a id="bold" title="Ctrl-B" onclick="mil_edit.bold()"></a>
 
-          <a id="link" title="Ctrl-Y" onclick="mil_edit.link()"></a>
+            <a id="link" title="Ctrl-Y" onclick="mil_edit.link()"></a>
+          </div>
         </div>
-      </div>
-
         <div id="list"></div>
       </div>
       <hr/>
-      <div id="hints">
-        <div id="mkd">
-          <div>**<b><a title="Ctrl-B" onclick="mil_edit.bold()" href="#">Bold</a></b>**, _<i><a title="Ctrl-I" onclick="mil_edit.italic()">Italic</a></i>_</div>
-          <div>[<a title="Ctrl-Y" onclick="mil_edit.link()">Link</a>](URL)</div>
-        </div>
-
-        <div id="functions">
-
-          <div><a target="_blank" title="All Keybindings on Github" id="all" href="http://github.com/mil/mil-edit">Keybindings</a></div>
-<div>
-            <a onclick="mil_edit.focus(-1)">&uarr;</a><a onclick="mil_edit.focus(1)">&darr;</a> to <a onclick="mil_edit.focus(1)" class="func">Focus Row</a>
-          </div>
-
-          <div>
-            <a onclick="mil_edit.undent()">&lt;</a><a onclick="mil_edit.indent()">&gt;</a>  to <a class="func" onclick="mil_edit.indent()">Change Indent</a>
-          </div>
-
-                    <div>
-            <a class="two-keys" onclick="mil_edit.shift(-1)"><span>Shift</span><span>&uarr;</span></a><a class="two-keys" onclick="mil_edit.shift(1)"><span>Shift</span><span>&darr;</span></a> to <a class="func" onclick="">Shift Row</a>
-          </div>
-        </div>
-      </div>
     </div>
   </body>
 </html>

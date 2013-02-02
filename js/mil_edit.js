@@ -308,7 +308,7 @@ var mil_edit = (function() {
   function insert(c) { 
     var old = $("#active textarea").val();
     var cursor = $("#active textarea")[0].selectionStart;
-    
+
     $("#active textarea").val(insert_at(old, cursor, c));
     focus.position_cursor_delta(c.length);
   }
@@ -458,7 +458,7 @@ var mil_edit = (function() {
     $(document).on('keydown', event_handlers.key_down);
     $(document).on('keyup', function() { clean_tree(); focus.adjust_rows()});
     $(document).on('mousedown', "li", event_handlers.mouse_down);
-     }
+  }
 
   function initialize() {
     setup_bindings();
