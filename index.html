@@ -13,6 +13,7 @@
     <script type="text/javascript" src="./js/markdown.js"></script>
     <script type="text/javascript" src="./js/to-markdown.js"></script>
 
+    <script type="text/javascript" src="./js/mil_edit.template.js"></script>
     <script type="text/javascript" src="./js/mil_edit.js"></script>
     <script type="text/javascript" src="./js/start_on_load.js"></script>
   </head>
@@ -23,23 +24,7 @@
       </div>
       <h1>mil edit</h1>
       <hr/>
-      <div id="editor">
-        <div id="buttons">
-          <div class="left">
-            <a id="undent" title="< or Ctrl-&larr;" onclick="mil_edit.undent()"></a>
-            <a id="indent" title="> or Ctrl-&rarr;" onclick="mil_edit.indent()"></a>
-
-          </div>
-
-          <div class="right">
-            <a id="italic" title="Ctrl-I" onclick="mil_edit.italic()"></a>
-            <a id="bold" title="Ctrl-B" onclick="mil_edit.bold()"></a>
-
-            <a id="link" title="Ctrl-Y" onclick="mil_edit.link()"></a>
-          </div>
-        </div>
-        <div id="list"></div>
-      </div>
+      <div id="editor"></div>
       <hr/>
     </div>
   </body>

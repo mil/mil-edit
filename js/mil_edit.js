@@ -1,7 +1,8 @@
 var mil_edit = (function() {
   var root = "#editor";
   var selector = root + " #list";
-  var raw = false;
+  var raw = false; // Raw mode enabled
+  var keybindings = false; // Keybindings enabled
   var content  = "";
 
   /* ===================
@@ -25,6 +26,10 @@ var mil_edit = (function() {
     } else {
       return false;
     }
+  }
+
+  function keybindings() {
+    
   }
 
 
@@ -454,17 +459,22 @@ var mil_edit = (function() {
   /* ===================
   * It's Alive
   * ===================== */
+  function load_template() {
+    console.log(editor_template);
+    $(root).html(editor_template);
+  }
   function setup_bindings() {
     $(document).on('keydown', event_handlers.key_down);
     $(document).on('keyup', function() { clean_tree(); focus.adjust_rows()});
     $(document).on('mousedown', "li", event_handlers.mouse_down);
   }
 
-  function initialize() {
+  function initialize(r) {
+    if (r != undefined) { root = r; }
+    load_template();
     setup_bindings();
     $(selector).html($("<ul>").append("<li>"));
     focus.set($(selector + " li").first());
-
   }
 
 
@@ -484,6 +494,8 @@ var mil_edit = (function() {
     undent : focus.undent,
     focus  : focus.set_delta,
     shift  : focus.shift,
+
+    keybindings : keybindings,
 
 
     dump_markdown : dump_markdown,
