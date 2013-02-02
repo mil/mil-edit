@@ -2,6 +2,7 @@ var mil_edit = (function() {
   var root = "#editor";
   var selector = root + " #list";
   var raw = false; // Raw mode enabled
+  var kb = false;
   var content  = "";
 
   /* ===================
@@ -28,8 +29,21 @@ var mil_edit = (function() {
   }
 
   function keybindings() {
-    console.log("keybindings");
-    $(root + " #keybindings").toggleClass("visible");  
+    if (kb) {
+      $(root + " #keybindings").animate({ opacity: 0 }, {
+        duration: 600, easing: 'ease-out',
+        complete: function() {
+          $(root + " #keybindings").removeClass("visible");
+        }
+      });
+      kb = false;
+    } else {
+      $(root + " #keybindings").addClass("visible").animate(
+        { opacity: 1.0 }, 
+        { duration: 600, easing: 'ease-in', }
+      );
+      kb = true;
+    }
   }
 
 

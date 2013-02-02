@@ -19,9 +19,17 @@ html body {
 
 h1 { font-size: 60px; }
 
+div#area {
+  clear: both;
+  overflow: hidden;
+  display: table;
+  width: 100%;
+  border-top: 1px solid #cfcfcf;
+  border: 1px solid #cfcfcf;
+  background: white;
+}
 div#editor { 
   width: 100%;
-  position: relative;
   overflow: hidden;
 }
 
@@ -29,11 +37,17 @@ div#editor #buttons {
   padding-left: 5px;
   padding-right: 5px;
   background: white;
-  margin-bottom: -5px;
   padding-top: 5px;
   border-left: 1px solid #cfcfcf;
   border-top: 1px solid #cfcfcf;
   border-right: 1px solid #cfcfcf;
+  margin-bottom -5px;
+}
+
+div#editor #list {
+  display: table-cell;
+  vertical-align: top;
+  height: 100%;
 }
 
 
@@ -85,13 +99,16 @@ a:hover {
 }
 
 ul {
-	margin: 5px 0;
+	margin: 0;
   display: block;
-  border: 1px solid #cfcfcf;
   padding-left: 20px;
   font-size: 20px;
   color: #212121;
 	
+}
+ul ul {
+  border: 1px solid #cfcfcf;
+  margin: 5px 0;
 }
 li {
   margin-left: 5px;
@@ -260,44 +277,62 @@ a.func:hover { background: #002abc !important; }
 #buttons a#down { background-image: url('../images/arrow_down.png'); }
 
 
-#buttons a#link { margin-right: 0; float: right; background-image: url('../images/world_link.png'); }
-#buttons a#italic { float: right; background-image: url('../images/text_italic.png'); }
-#buttons a#bold { float: right; background-image: url('../images/text_bold.png'); }
+#buttons a#link { margin-right: 0; background-image: url('../images/world_link.png'); }
+#buttons a#italic { background-image: url('../images/text_italic.png'); }
+#buttons a#bold { background-image: url('../images/text_bold.png'); }
 
-#buttons a#keys { background-image: url('../images/keyboard.png'); }
-
-#keybindings { 
-  position: absolute;
+#buttons a#keys { 
+  background-image: none;
+  font-family: Verdana;
   width: auto;
-  height: 100%;
-  top: 40px;
-  left: 32px;
-  right: 10px;
-  background: white;
-  display: none; 
+  padding-right: 5px;
+  padding-left: 5px;
   font-size: 11px;
   line-height: 20px;
-  border-left: 8px solid #002ab3;
-  border-top: 8px solid #cfcfcf;
-  padding: 10px;
+  padding-right: 5px;
+  text-align: right;
+}
+a#keys:hover {
+  background: #002ab3;
+  color: white;
+  border: none;
+}
+
+#keybindings { 
+  font-size: 12px;
+  line-height: 20px;
+  text-align: left;
+  width: 230px;
+  font-size: 12px;
+  background: #fcfcfc;
+  display: none;
+  opacity: 0;
+  margin: 0;
+  vertical-align: top;
+  border-bottom: 1px dotted #cfcfcf;
+  border-left: 1px solid #cfcfcf;
+  padding: 15px;
   padding-top: 0;
 }
 
 #keybindings div { 
 }
-#keybindings.visible { display: block; }
+#keybindings.visible { display: table-cell; }
 
 #keybindings .basic {
-  clear: both;
-  overflow: hidden;
-  padding: 10px;
 
 }
 #keybindings .basic h2 {
-  font-size: 16px;
+  font-size: 15px;
+  line-height: 30px;
   border-bottom: 1px solid #cfcfcf;
   margin-bottom: 10px;
   margin-top: 10px;
+  display: block;
+  width: auto;
+  color: white;
+  color: #002ab3;
+  font-family: Verdana, sans;
 }
 
 #keybindings .basic .left {
@@ -306,4 +341,13 @@ a.func:hover { background: #002abc !important; }
 }
 #keybindings .basic .right {
   display: block;
+}
+
+span.key {
+  border: 1px solid #cfcfcf;
+  background: white;
+  display: inline-block;
+  padding: 0px 5px;
+  line-height: 18px;
+  margin-top: 3px;
 }
