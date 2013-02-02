@@ -2,7 +2,6 @@ var mil_edit = (function() {
   var root = "#editor";
   var selector = root + " #list";
   var raw = false; // Raw mode enabled
-  var keybindings = false; // Keybindings enabled
   var content  = "";
 
   /* ===================
@@ -29,7 +28,8 @@ var mil_edit = (function() {
   }
 
   function keybindings() {
-    
+    console.log("keybindings");
+    $(root + " #keybindings").toggleClass("visible");  
   }
 
 

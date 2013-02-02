@@ -13,10 +13,16 @@ html body {
   padding: 20px;
 }
 
+.left { float: left; display: inline-block; }
+.right { float: right; display: inline-block; }
+
+
 h1 { font-size: 60px; }
 
 div#editor { 
   width: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
 div#editor #buttons {
@@ -231,8 +237,6 @@ a.func:hover { background: #002abc !important; }
   display: inline-block;
 }
 
-#buttons .left { float: left; display: inline-block; }
-#buttons .right { float: right; display: inline-block; }
 
 #buttons a {
   display: inline-block;
@@ -260,4 +264,46 @@ a.func:hover { background: #002abc !important; }
 #buttons a#italic { float: right; background-image: url('../images/text_italic.png'); }
 #buttons a#bold { float: right; background-image: url('../images/text_bold.png'); }
 
+#buttons a#keys { background-image: url('../images/keyboard.png'); }
 
+#keybindings { 
+  position: absolute;
+  width: auto;
+  height: 100%;
+  top: 40px;
+  left: 32px;
+  right: 10px;
+  background: white;
+  display: none; 
+  font-size: 11px;
+  line-height: 20px;
+  border-left: 8px solid #002ab3;
+  border-top: 8px solid #cfcfcf;
+  padding: 10px;
+  padding-top: 0;
+}
+
+#keybindings div { 
+}
+#keybindings.visible { display: block; }
+
+#keybindings .basic {
+  clear: both;
+  overflow: hidden;
+  padding: 10px;
+
+}
+#keybindings .basic h2 {
+  font-size: 16px;
+  border-bottom: 1px solid #cfcfcf;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+#keybindings .basic .left {
+  display: block;
+
+}
+#keybindings .basic .right {
+  display: block;
+}
