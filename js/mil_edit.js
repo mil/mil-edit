@@ -42,7 +42,7 @@ var mil_edit = (function() {
       $("#keys").animate({ 'margin-right': '170px' }, { duration: 150 });
       $(root + " #keybindings").addClass("visible").animate(
         { opacity: 1.0 }, 
-        { duration: 600, easing: 'ease-in', }
+        { duration: 600, easing: 'ease-in' }
       );
       kb = true;
     }
