@@ -31,15 +31,16 @@ var mil_edit = (function() {
   function keybindings() {
     if (kb) {
       $("#keys").animate({ 'margin-right': '0' }, { duration: 150 });
+      $("#keys").removeClass("enabled"); 
       $(root + " #keybindings").animate({ opacity: 0 }, {
-        duration: 600, easing: 'ease-out',
-        complete: function() {
-          $(root + " #keybindings").removeClass("visible");
+        complete : function() {
+          $(root + " #keybindings").removeClass("visible"); 
         }
       });
       kb = false;
     } else {
-      $("#keys").animate({ 'margin-right': '170px' }, { duration: 150 });
+      $("#keys").animate({ 'margin-right': '131px' }, { duration: 150 });
+      $("#keys").addClass('enabled');
       $(root + " #keybindings").addClass("visible").animate(
         { opacity: 1.0 }, 
         { duration: 600, easing: 'ease-in' }
@@ -441,6 +442,11 @@ var mil_edit = (function() {
     // Undent and Indent with arrow keys
     if (k.keyCode == 37 && k.shiftKey) { focus.undent(); }
     if (k.keyCode == 39 && k.shiftKey) { focus.indent(); }
+
+    if (k.keyCode == 74 && k.shiftKey & k.ctrlKey) { focus.set_delta(1); return false; }
+    if (k.keyCode == 75 && k.shiftKey & k.ctrlKey) { focus.set_delta(-1); return false;}
+
+    console.log(k);
 
     // Control combos
     if (k.ctrlKey) {

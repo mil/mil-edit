@@ -7,6 +7,7 @@ Zepto(function($){
   * Exports to **Markdown**\n\
 - Hacker?\n\
   * Source on [Github](http://github.com/mil/mil-edit)\n\
+  * VIM-Esque Keybindings\n\
   * Released [CC0](http://creativecommons.org/publicdomain/zero/1.0) - Public Domain";
   mil_edit.initialize();
   mil_edit.load_markdown(defaultMarkdown);

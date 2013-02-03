@@ -1,19 +1,16 @@
 var template_buttons = ''.concat(
+  '<div class="clear">',
   '<div id="buttons">',
 
-  '<div class="left">',
   '<a id="undent" title="< or Ctrl-&larr;" onclick="mil_edit.undent()"></a>',
   '<a id="indent" title="> or Ctrl-&rarr;" onclick="mil_edit.indent()"></a>',
 
   '<a id="bold" title="Ctrl-B" onclick="mil_edit.bold()"></a>',
   '<a id="italic" title="Ctrl-I" onclick="mil_edit.italic()"></a>',
+
   '</div>',
 
-
-  '<div class="right">',
   '<a id="keys" onclick="mil_edit.keybindings()">Key Controls</a>',
-  '</div>',
-
   '</div>'
 );
 
@@ -34,6 +31,7 @@ var template_keybindings = ''.concat(
   '<span class="key">&uarr;</span> and <span class="key">&darr;</span> move between lines<br/>',
   '<span class="key">Shift</span> <span class="key">&uarr;</span> <span class="key">&darr;</span> shifts the line',
   '</div>',
+  '<a id="collapse" onclick="mil_edit.keybindings()">Collapse &rarr;</a>',
 
   '</div>'
 );
