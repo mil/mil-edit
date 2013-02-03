@@ -322,7 +322,15 @@ a#keys:hover {
 #keybindings .basic {
 
 }
-#keybindings .basic h2 {
+
+#keybindings h2 a {
+  font-size: 11px;
+  float: right;
+  line-height: 16px;
+  margin-top: 8px;
+}
+
+#keybindings h2 {
   font-size: 15px;
   line-height: 30px;
   border-bottom: 1px solid #cfcfcf;
@@ -342,6 +350,9 @@ a#keys:hover {
 #keybindings .basic .right {
   display: block;
 }
+#keybindings .advanced {
+  display: none;
+}
 
 span.key {
   border: 1px solid #cfcfcf;
@@ -350,4 +361,5 @@ span.key {
   padding: 0px 5px;
   line-height: 18px;
   margin-top: 3px;
+  font-size: 15px;
 }

@@ -24,14 +24,17 @@ var template_keybindings = ''.concat(
 
   '<h2>Styling Text</h2>',
   '**<b>Two Stars</b>** makes text <b>Bold</b><br/>',
-  '_<i>Underscores</i>_ makes text <i>Italic</i>',
+  '_<i>Underscores</i>_ makes text <i>Italic</i><br/>',
 
   '<h2>Changing Indentation</h2>',
   'Indentation: <span class="key">&gt;</span> or <span class="key">Shift</span> <span class="key">&rarr;</span><br/>',
   'Undentation: <span class="key">&lt;</span> or <span class="key">Shift</span> <span class="key">&larr;</span>',
 
+  '<h2>Moving Around</h2>',
+  '<span class="key">&uarr;</span> and <span class="key">&darr;</span> move between lines<br/>',
+  '<span class="key">Shift</span> <span class="key">&uarr;</span> <span class="key">&darr;</span> shifts the line',
   '</div>',
- 
+
   '</div>'
 );
 
