@@ -13,18 +13,18 @@ html body {
   padding: 20px;
 }
 
-.left { float: left; display: inline-block; }
-.right { float: right; display: inline-block; }
+#buttons.left { width: 200px; display: inline-block; text-align: left; }
 
-
-h1 { font-size: 60px; }
+h1 { 
+  font-size: 60px; 
+  text-align: center;
+}
 
 div#area {
   clear: both;
   overflow: hidden;
   display: table;
   width: 100%;
-  border-top: 1px solid #cfcfcf;
   border: 1px solid #cfcfcf;
   background: white;
 }
@@ -34,14 +34,21 @@ div#editor {
 }
 
 div#editor #buttons {
-  padding-left: 5px;
-  padding-right: 5px;
+  padding: 5px; 
+  padding-bottom: 0;
   background: white;
-  padding-top: 5px;
-  border-left: 1px solid #cfcfcf;
-  border-top: 1px solid #cfcfcf;
-  border-right: 1px solid #cfcfcf;
-  margin-bottom -5px;
+  border: 1px solid #cfcfcf;
+  border-bottom: none;
+  width: auto;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  width: 120px;
+  display: inline-block;
+  float: left;
+
 }
 
 div#editor #list {
@@ -66,11 +73,7 @@ a {
   color: #002ab3;
   cursor: pointer;
 }
-
-a:hover {
-  color: white;
-  background-color: #002ab3;
-}
+a:hover { color: white; background-color: #002ab3; }
 
 
 #active {
@@ -111,15 +114,15 @@ ul ul {
   margin: 5px 0;
 }
 li {
+  display: list-item;
+  background-color: white;
+
   margin-left: 5px;
 	padding: 5px;
   padding-left: 20px;
-  border-bottom: 1px dotted #cfcfcf;
-  display: list-item;
-
-  background-color: white;
 
   border-left: 1px solid #cfcfcf;
+  border-bottom: 1px dotted #cfcfcf;
 
   cursor: pointer;
   -webkit-user-select: none;
@@ -139,89 +142,15 @@ ul li ul li ul li { font-size: 16px; }
 ul li ul li ul li ul li { font-size: 14px; }
 ul li ul li ul li ul li { font-size: 12px; }
 
-
-
-#top-buttons {
-  float: right;
-  padding-top: 30px;
-  text-align: right;
-}
-#top-buttons a { font-size: 15px; text-decoration: none; }
-
-
 strong, b { font-weight: bold; }
 em, i { font-style: italic;}
 
-#hints { clear: both; }
-#hints #mkd { 
-  float: left; 
-}
-#hints #mkd div {
-  padding: 4px 0px;
-}
-
-#hints #functions {
-  float: right;
-  text-align: right;
-  vertical-align: baseline;
-}
-
-#hints #functions div {
-  margin-bottom: 4px;
-
-}
-#hints #functions a {
-  background: white;
-  color: #002ab3;
-
-  border: 1px solid #cfcfcf;
-  display: inline-block;
-  font-size: 14px;
-  padding: 2px 5px;
-  margin: 0 2px;
-  cursor: pointer;
-
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-
-#hints #functions a:hover {
-  background: #002ab3;
-  color: white;
-}
-
-#hints #functions a.two-keys {
-  background: none !important;
-  border: none !important;
-  margin: 0 !important;
-}
-#hints #functions a.two-keys span {
-  background: none;
-  display: inline-block;
-  background: white;
-  color: #002ab3;
-  border: 1px solid #cfcfcf;
-  padding: 2px 5px;
-
-  margin: 0 2px;
-}
 
 #all {
   border: none !important;
   margin-right:  0 !important
 }
 
-#functions div { margin: 5px 0; }
-#functions a:hover span { background: #002abc !important; color: white !important; }
-
-a.func {
-  background: none !important;
-  border: none !important;
-  padding: 2px 2px !important;
-  margin: 0;
-}
-a.func:hover { background: #002abc !important; }
 
 #editor textarea#raw {
   font-size: 13px;
@@ -237,28 +166,14 @@ a.func:hover { background: #002abc !important; }
 }
 
 
-
-
-#buttons {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-
-  text-align: center;
-  clear: both;
-  overflow: hidden;
+.clear {
+  clear : both;
 }
-
-#buttons .center {
-  height: 25px;
-  display: inline-block;
-}
-
 
 #buttons a {
   display: inline-block;
   width: 20px;
-  height: 20px;
+  height: 22px;
   margin: 0 0px;
   background: white;
   background-position: center center;
@@ -275,29 +190,9 @@ a.func:hover { background: #002abc !important; }
 #buttons a#indent { background-image: url('../images/text_indent.png'); }
 #buttons a#up { background-image: url('../images/arrow_up.png'); }
 #buttons a#down { background-image: url('../images/arrow_down.png'); }
-
-
-#buttons a#link { margin-right: 0; background-image: url('../images/world_link.png'); }
+#buttons a#link { background-image: url('../images/world_link.png'); }
 #buttons a#italic { background-image: url('../images/text_italic.png'); }
 #buttons a#bold { background-image: url('../images/text_bold.png'); }
-
-#buttons a#keys { 
-  background-image: none;
-  font-family: Verdana;
-  width: auto;
-  padding-right: 5px;
-  padding-left: 5px;
-  font-size: 11px;
-  line-height: 20px;
-  padding-right: 5px;
-  text-align: right;
-}
-a#keys:hover {
-  background: #002ab3;
-  color: white;
-  border: none;
-}
-
 #keybindings { 
   font-size: 12px;
   line-height: 20px;
@@ -313,15 +208,55 @@ a#keys:hover {
   border-left: 1px solid #cfcfcf;
   padding: 15px;
   padding-top: 0;
+  margin-left: 20px;
 }
 
-#keybindings div { 
+#footer {
+  text-align: center;
 }
+
+
+
+
+a#keys { 
+  border: 1px solid #cfcfcf;
+  border-bottom: none;
+  padding: 9px; 
+  margin-top: 3px;
+  float: right;
+  background: white;
+  display: block;
+  width: 80px !important;
+  text-align: left !important;
+  font-family: Verdana;
+  font-size: 11px;
+  background-image: url('../images/keyboard.png');
+  background-position: 8px center;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+}
+
+a#keys.enabled { 
+  color: black;
+  border-bottom: 1px solid white;
+  position: relative;
+  margin-bottom: -3px;
+}
+
+a#keys:hover {
+  border: 1px solid #f0f0f0;
+  border-bottom: none;
+  color: blue;
+}
+.collapse {
+  right: 20px;
+  bottom: 20px;
+  position: absolute;
+}
+a#keys.enabled:hover {
+}
+
 #keybindings.visible { display: table-cell; }
-
-#keybindings .basic {
-
-}
 
 #keybindings h2 a {
   font-size: 11px;
@@ -353,7 +288,6 @@ a#keys:hover {
 #keybindings .advanced {
   display: none;
 }
-
 span.key {
   border: 1px solid #cfcfcf;
   background: white;
