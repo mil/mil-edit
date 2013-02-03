@@ -30,6 +30,7 @@ var mil_edit = (function() {
 
   function keybindings() {
     if (kb) {
+      $("#keys").animate({ 'margin-right': '0' }, { duration: 150 });
       $(root + " #keybindings").animate({ opacity: 0 }, {
         duration: 600, easing: 'ease-out',
         complete: function() {
@@ -38,6 +39,7 @@ var mil_edit = (function() {
       });
       kb = false;
     } else {
+      $("#keys").animate({ 'margin-right': '170px' }, { duration: 150 });
       $(root + " #keybindings").addClass("visible").animate(
         { opacity: 1.0 }, 
         { duration: 600, easing: 'ease-in', }
