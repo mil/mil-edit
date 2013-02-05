@@ -30,7 +30,7 @@ var mil_edit = (function() {
 
   function keybindings() {
     if (kb) {
-      $("#keys").animate({ 'margin-right': '0' }, { duration: 150 });
+      $("#keys").animate({ 'width': 'auto' }, { duration: 150 });
       $("#keys").removeClass("enabled"); 
       $(root + " #keybindings").animate({ opacity: 0 }, {
         complete : function() {
@@ -39,7 +39,7 @@ var mil_edit = (function() {
       });
       kb = false;
     } else {
-      $("#keys").animate({ 'margin-right': '131px' }, { duration: 150 });
+      $("#keys").animate({ 'width': '215px' }, { duration: 150 });
       $("#keys").addClass('enabled');
       $(root + " #keybindings").addClass("visible").animate(
         { opacity: 1.0 }, 

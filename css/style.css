@@ -31,13 +31,14 @@ div#area {
 div#editor { 
   width: 100%;
   overflow: hidden;
+  background: white;
+  border-top: 1px solid #cfcfcf;
 }
 
 div#editor #buttons {
   padding: 5px; 
   padding-bottom: 0;
   background: white;
-  border: 1px solid #cfcfcf;
   border-bottom: none;
   width: auto;
 
@@ -166,8 +167,12 @@ em, i { font-style: italic;}
 }
 
 
-.clear {
-  clear : both;
+.clear { clear : both; }
+.top-bar { 
+  clear: both; background: white; 
+  overflow: hidden;
+  border-left: 1px solid #cfcfcf;
+  border-right: 1px solid #cfcfcf;
 }
 
 #buttons a {
@@ -209,6 +214,8 @@ em, i { font-style: italic;}
   padding: 15px;
   padding-top: 0;
   margin-left: 20px;
+  background: white;
+  position: relative;
 }
 
 #footer {
@@ -219,39 +226,48 @@ em, i { font-style: italic;}
 
 
 a#keys { 
-  border: 1px solid #cfcfcf;
-  border-bottom: none;
-  padding: 9px; 
-  margin-top: 3px;
   float: right;
-  background: white;
-  display: block;
-  width: 80px !important;
-  text-align: left !important;
-  font-family: Verdana;
-  font-size: 11px;
+  display: inline-block;
+  width: auto;
+  border-left: 1px solid #cfcfcf;
+  line-height: 31px;
   background-image: url('../images/keyboard.png');
-  background-position: 8px center;
+  background-position: 10px center;
   background-repeat: no-repeat;
-  padding-left: 40px;
+  height: 32px;
+  padding-right: 10px;
+  font-family: Verdana, sans;
+  font-size: 11px;
+  color: black;
+  padding-left: 35px;
+
 }
 
-a#keys.enabled { 
+a#keys span {
   color: black;
-  border-bottom: 1px solid white;
-  position: relative;
-  margin-bottom: -3px;
+  border-left: 1px solid #cfcfcf;
+  padding-left: 8px;
+  line-height: 10px;
+  height: 10px;
+  color: #002ab3;
+  
 }
 
 a#keys:hover {
-  border: 1px solid #f0f0f0;
-  border-bottom: none;
-  color: blue;
+  color: #002ab3;
+  background-color: white;
 }
-.collapse {
-  right: 20px;
+
+a#keys.enabled {
+  background-color: #fcfcfc;
+  font-size: 13px;
+  color: #002ab3;
+}
+a#collapse {
+  left: 20px;
   bottom: 20px;
   position: absolute;
+  font-family: Verdana;
 }
 a#keys.enabled:hover {
 }
@@ -273,7 +289,6 @@ a#keys.enabled:hover {
   margin-top: 10px;
   display: block;
   width: auto;
-  color: white;
   color: #002ab3;
   font-family: Verdana, sans;
 }
