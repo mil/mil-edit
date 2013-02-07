@@ -221,6 +221,7 @@ em, i { font-style: italic;}
 
 #footer {
   text-align: left;
+  line-height: 20px;
 }
 
 
@@ -238,7 +239,7 @@ a#keys {
   height: 32px;
   padding-right: 10px;
   font-family: Verdana, sans;
-  font-size: 11px;
+  font-size: 10px;
   color: black;
   padding-left: 35px;
   background-color: #fcfcfc;
@@ -246,6 +247,7 @@ a#keys {
 }
 
 a#keys:hover {
+  background-color: #f5f5f5;
 }
 
 a#keys span {
@@ -254,22 +256,19 @@ a#keys span {
   padding-left: 8px;
   line-height: 10px;
   height: 10px;
-  color: #002ab3;
-  font-variant: small-caps;
-  
 }
 
-a#keys span:hover {
+a#keys:hover span {
   color: #002ab3;
-  text-decoration: underline;
 }
+.right { float: right; }
 
 a#keys.enabled {
   background-color: white;
   font-size: 15px;
-  color: black !important;
-  font-variant: small-caps;
 }
+
+a#keys.enabled span { color: #002ab3; }
 a#collapse {
   left: 20px;
   bottom: 20px;
