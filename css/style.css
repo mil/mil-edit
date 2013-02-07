@@ -203,7 +203,7 @@ em, i { font-style: italic;}
   line-height: 20px;
   text-align: left;
   width: 230px;
-  font-size: 12px;
+  font-size: 11px;
   background: #fcfcfc;
   display: none;
   opacity: 0;
@@ -216,6 +216,7 @@ em, i { font-style: italic;}
   margin-left: 20px;
   background: white;
   position: relative;
+  font-family: Verdana, sans;
 }
 
 #footer {
@@ -240,7 +241,12 @@ a#keys {
   font-size: 11px;
   color: black;
   padding-left: 35px;
+  background-color: #fcfcfc;
 
+}
+
+a#keys:hover {
+  border-bottom: 1px dotted #002ab3;
 }
 
 a#keys span {
@@ -250,18 +256,21 @@ a#keys span {
   line-height: 10px;
   height: 10px;
   color: #002ab3;
+  font-variant: small-caps;
   
 }
 
-a#keys:hover {
+a#keys span:hover {
   color: #002ab3;
-  background-color: white;
+  text-decoration: underline;
 }
 
 a#keys.enabled {
-  background-color: #fcfcfc;
-  font-size: 13px;
-  color: #002ab3;
+  background-color: white;
+  font-size: 15px;
+  color: black !important;
+  border-bottom: 1px dotted #cfcfcf;
+  font-variant: small-caps;
 }
 a#collapse {
   left: 20px;
@@ -307,8 +316,9 @@ span.key {
   border: 1px solid #cfcfcf;
   background: white;
   display: inline-block;
-  padding: 0px 5px;
+  padding: 0px 3px;
   line-height: 18px;
   margin-top: 3px;
-  font-size: 15px;
+  font-size: 11px;
+
 }
