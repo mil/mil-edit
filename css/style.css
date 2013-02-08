@@ -1,8 +1,8 @@
 html body {
   padding-top: 0;
   background: #fff;
-  font-size: 14px;
-  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  font-size: 13px;
+  font-family: monospace;
   background: url('../images/linedpaper.png');
 } 
 /* mil-edit Display Page specific 
@@ -16,6 +16,7 @@ html body {
 h1 { 
   font-size: 60px; 
   text-align: left;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 }
 
 #footer {
@@ -77,7 +78,7 @@ div#editor #list {
   color: black;
   background: #f0f0f0;
   border-top: 1px solid #ffffff;
-  padding: 5px 20px;
+  padding: 5px 10px;
   line-height: 0;
 }
 
@@ -99,7 +100,7 @@ div#editor #list {
 #editor ul {
 	margin: 0;
   display: block;
-  padding-left: 20px;
+  padding-left: 10px;
   font-size: 20px;
   color: #212121;
 	
@@ -114,7 +115,7 @@ div#editor #list {
 
   margin-left: 5px;
 	padding: 5px;
-  padding-left: 20px;
+  padding-left: 15px;
 
   border-left: 1px solid #cfcfcf;
   border-bottom: 1px dotted #cfcfcf;
@@ -125,19 +126,18 @@ div#editor #list {
   -ms-user-select: none;
 }
 
+
 #editor ul { background: #ffffff; padding-left: 0;}
-#editor ul ul { background: #f0f0f0; padding-left: 10px; }
-#editor ul ul ul { background: #ffffff; padding-left: 8px; }
-#editor ul ul ul ul { background: #f0f0f0; padding-left: 6px; }
-#editor ul ul ul ul  ul { background: #f0f0f0; padding-left: 4px; }
-#editor ul ul ul ul ul ul { background: #f0f0f0; padding-left: 2px; }
+#editor ul ul { 
+  background: #f0f0f0; 
+}
+#editor ul ul ul { background: #ffffff; }
+#editor ul ul ul ul { background: #f0f0f0; }
+#editor ul ul ul ul  ul { background: #f0f0f0; }
+#editor ul ul ul ul ul ul { background: #f0f0f0; }
 
 
-#editor ul li { font-size: 20px; }
-#editor ul li ul li { font-size: 18px; }
-#editor ul li ul li ul li { font-size: 16px; }
-#editor ul li ul li ul li ul li { font-size: 14px; }
-#editor ul li ul li ul li ul li { font-size: 12px; }
+#editor ul li { font-size: 14px; }
 
 #editor strong, b { font-weight: bold; }
 #editor em, i { font-style: italic;}
@@ -221,7 +221,6 @@ div#editor #buttons {
   padding: 0;
   padding-right: 10px;
 
-  font-family: Verdana, sans;
   font-size: 10px;
   color: black;
   padding-left: 35px;

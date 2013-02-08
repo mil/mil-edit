@@ -30,20 +30,15 @@ var mil_edit = (function() {
 
   function keybindings() {
     if (kb) {
-      $("#keys").animate({ 'width': 'auto' }, { duration: 150 });
-      $("#keys").removeClass("enabled"); 
+      $("#keys").animate({ 'width': 'auto' }, { duration: 150 }).removeClass("enabled"); 
       $(root + " #keybindings").animate({ opacity: 0 }, {
-        complete : function() {
-          $(root + " #keybindings").removeClass("visible"); 
-        }
+        complete : function() { $(root + " #keybindings").removeClass("visible"); }
       });
       kb = false;
     } else {
-      $("#keys").animate({ 'width': '215px' }, { duration: 150 });
-      $("#keys").addClass('enabled');
+      $("#keys").animate({ 'width': '215px' }, { duration: 150 }).addClass('enabled');
       $(root + " #keybindings").addClass("visible").animate(
-        { opacity: 1.0 }, 
-        { duration: 600, easing: 'ease-in' }
+        { opacity: 1.0 }, { duration: 600, easing: 'ease-in' }
       );
       kb = true;
     }
@@ -146,8 +141,7 @@ var mil_edit = (function() {
 
   focus.adjust_rows = function() {
     var f = $("#active textarea");
-    f.css("overflow", "hidden");
-    f.height("18px");
+    f.css("overflow", "hidden").height("18px");
     f.height(f[0].scrollHeight + "px");
   }
 
