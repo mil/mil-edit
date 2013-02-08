@@ -391,8 +391,10 @@ var mil_edit = (function() {
     surround_selection("_", "_"); 
   }
   function link() { 
+    var field = $("#active textarea")[0];
+    var selected = field.selectionStart != field.selectionEnd ? true : false;
     surround_selection("[", "]()");
-    focus.position_cursor_delta(-2); 
+    if (selected) { focus.position_cursor_delta(-1); }
   }
 
 
