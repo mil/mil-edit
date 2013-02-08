@@ -125,10 +125,13 @@ div#editor #list {
   -ms-user-select: none;
 }
 
-#editor ul { background: #ffffff; }
-#editor ul ul { background: #f0f0f0; }
-#editor ul ul ul { background: #ffffff; }
-#editor ul ul ul ul { background: #f0f0f0; }
+#editor ul { background: #ffffff; padding-left: 0;}
+#editor ul ul { background: #f0f0f0; padding-left: 10px; }
+#editor ul ul ul { background: #ffffff; padding-left: 8px; }
+#editor ul ul ul ul { background: #f0f0f0; padding-left: 6px; }
+#editor ul ul ul ul  ul { background: #f0f0f0; padding-left: 4px; }
+#editor ul ul ul ul ul ul { background: #f0f0f0; padding-left: 2px; }
+
 
 #editor ul li { font-size: 20px; }
 #editor ul li ul li { font-size: 18px; }
