@@ -79,7 +79,6 @@ div#editor #list {
   background: #f0f0f0;
   border-top: 1px solid #ffffff;
   padding: 5px 10px;
-  line-height: 0;
 }
 
 #editor #active textarea {
@@ -91,7 +90,7 @@ div#editor #list {
   font-size: inherit;
   margin-bottom: 0;
   padding-bottom: 0;
-  line-height: 1.3em;
+  line-height: 1.6em;
   resize: none;
   word-wrap: break-word;
   white-space:pre;
@@ -103,11 +102,13 @@ div#editor #list {
   padding-left: 10px;
   font-size: 20px;
   color: #212121;
+  line-height: 1em;
 	
 }
 #editor ul ul {
   border: 1px solid #cfcfcf;
   margin: 5px 0;
+
 }
 #editor li {
   display: list-item;
