@@ -5,59 +5,23 @@ html body {
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
   background: url('../images/linedpaper.png');
 } 
+/* mil-edit Display Page specific 
+ * You don't need this stuff if you drop mil edit somewhere
+ * */
+.right { float: right; }
+.left { float: left; }
 
-/* ===============
- * Application
- * =============== */
-#application {
-  padding: 20px;
-}
-
-#buttons.left { width: 200px; display: inline-block; text-align: left; }
+#application { padding: 20px; }
 
 h1 { 
   font-size: 60px; 
   text-align: left;
 }
 
-div#area {
-  clear: both;
-  overflow: hidden;
-  display: table;
-  width: 100%;
-  border: 1px solid #cfcfcf;
-  background: white;
+#footer {
+  text-align: left;
+  line-height: 20px;
 }
-div#editor { 
-  width: 100%;
-  overflow: hidden;
-  background: white;
-  border-top: 1px solid #cfcfcf;
-}
-
-div#editor #buttons {
-  padding: 5px; 
-  padding-bottom: 0;
-  background: white;
-  border-bottom: none;
-  width: auto;
-
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-
-  width: 120px;
-  display: inline-block;
-  float: left;
-
-}
-
-div#editor #list {
-  display: table-cell;
-  vertical-align: top;
-  height: 100%;
-}
-
 
 hr {
   border: none;
@@ -77,17 +41,47 @@ a {
 a:hover { color: white; background-color: #002ab3; }
 
 
-#active {
+/* mil-edit Editor Area 
+ * For styling the lists, textarea, etc... */
+div#editor { 
+  width: 100%;
+  overflow: hidden;
+  background: white;
+}
+
+div#editor div#area {
+  clear: both;
+  overflow: hidden;
+  display: table;
+  width: 100%;
+  border: 1px solid #cfcfcf;
+  background: white;
+}
+
+div#editor #list {
+  display: table-cell;
+  vertical-align: top;
+  height: 100%;
+}
+
+#editor a {
+  text-decoration: none;
+  padding: 0 2px;
+  color: #002ab3;
+  cursor: pointer;
+}
+#editor a:hover { color: white; background-color: #002ab3; }
+
+
+#editor #active {
   color: black;
   background: #f0f0f0;
   border-top: 1px solid #ffffff;
-  padding-right: 20px;
-  padding-bottom: -5px;;
-  padding-top: 8px;
+  padding: 5px 20px;
   line-height: 0;
 }
 
-#active textarea {
+#editor #active textarea {
   width: 100%;
   background: none;
   border: none;
@@ -102,7 +96,7 @@ a:hover { color: white; background-color: #002ab3; }
   white-space:pre;
 }
 
-ul {
+#editor ul {
 	margin: 0;
   display: block;
   padding-left: 20px;
@@ -110,11 +104,11 @@ ul {
   color: #212121;
 	
 }
-ul ul {
+#editor ul ul {
   border: 1px solid #cfcfcf;
   margin: 5px 0;
 }
-li {
+#editor li {
   display: list-item;
   background-color: white;
 
@@ -131,65 +125,126 @@ li {
   -ms-user-select: none;
 }
 
-ul { background: #ffffff; }
-ul ul { background: #f0f0f0; }
-ul ul ul { background: #ffffff; }
-ul ul ul ul { background: #f0f0f0; }
+#editor ul { background: #ffffff; }
+#editor ul ul { background: #f0f0f0; }
+#editor ul ul ul { background: #ffffff; }
+#editor ul ul ul ul { background: #f0f0f0; }
 
+#editor ul li { font-size: 20px; }
+#editor ul li ul li { font-size: 18px; }
+#editor ul li ul li ul li { font-size: 16px; }
+#editor ul li ul li ul li ul li { font-size: 14px; }
+#editor ul li ul li ul li ul li { font-size: 12px; }
 
-ul li { font-size: 20px; }
-ul li ul li { font-size: 18px; }
-ul li ul li ul li { font-size: 16px; }
-ul li ul li ul li ul li { font-size: 14px; }
-ul li ul li ul li ul li { font-size: 12px; }
+#editor strong, b { font-weight: bold; }
+#editor em, i { font-style: italic;}
 
-strong, b { font-weight: bold; }
-em, i { font-style: italic;}
-
-
-#all {
-  border: none !important;
-  margin-right:  0 !important
-}
-
-
+/* Raw Markdown Mode */
 #editor textarea#raw {
   font-size: 13px;
   min-height: 300px;
   width: 100%;
-  border: 1px solid #cecece;
+  border: none;
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
   border-sizing: border-box;
   -webkit-border-sizing: border-box;
-  padding: 10px 0;
+  padding: 10px;
   background: white;
   color: black;
+  outline: none;
+  overflow-x: hidden;
+  overflow-y: scroll !important;
 }
 
 
 .clear { clear : both; }
-.top-bar { 
-  clear: both; background: white; 
-  overflow: hidden;
-  border-left: 1px solid #cfcfcf;
-  border-right: 1px solid #cfcfcf;
+
+/* Buttons Bar at the top of the editor */
+
+div#editor #buttons {
+  height: 35px;
+
+  padding: 0 5px; 
+  padding-right: 0;
+
+  background: white;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+
+  border: 1px solid #cfcfcf;
+  border-bottom: none;
+
+  width: auto;
+  clear: both;
 }
 
+
 #buttons a {
-  display: inline-block;
   width: 20px;
   height: 22px;
+
   margin: 0 0px;
+  margin-top: 5px;
+
   background: white;
   background-position: center center;
-  border: 1px solid white;
   background-repeat: no-repeat;
+
+  border: 1px solid white;
+
+  float: left;
 }
 
 #buttons a:hover {
   border: 1px solid #cfcfcf;
   background-color: #e6e6e6;
 }
+
+
+#buttons a#keys { 
+  float: right;
+  display: inline-block;
+  width: auto;
+  height: 35px;
+  line-height: 35px;
+
+  background-image: url('../images/keyboard.png');
+  background-position: 10px center;
+  background-repeat: no-repeat;
+
+  padding: 0;
+  padding-right: 10px;
+
+  font-family: Verdana, sans;
+  font-size: 10px;
+  color: black;
+  padding-left: 35px;
+  background-color: #fcfcfc;
+  margin-top: 0;
+
+  border: none;
+  border-left: 1px solid #cfcfcf;
+}
+
+#buttons a#keys span {
+  color: #4d4d4d;
+  border-left: 1px solid #cfcfcf;
+  padding-left: 8px;
+  line-height: 10px;
+  height: 10px;
+}
+
+
+#buttons a#keys:hover {
+  border: none; border-left: 1px solid #cfcfcf;
+}
+#buttons a#keys:hover span { color: #002ab3; }
+
+#buttons a#keys.enabled { font-size: 15px; }
+
 
 #buttons a#undent { margin-left: 0; background-image: url('../images/text_indent_remove.png'); }
 #buttons a#indent { background-image: url('../images/text_indent.png'); }
@@ -219,63 +274,19 @@ em, i { font-style: italic;}
   height: 360px;
 }
 
-#footer {
-  text-align: left;
-  line-height: 20px;
-}
-
-
-
-
-a#keys { 
-  float: right;
-  display: inline-block;
-  width: auto;
-  border-left: 1px solid #cfcfcf;
-  line-height: 31px;
-  background-image: url('../images/keyboard.png');
-  background-position: 10px center;
-  background-repeat: no-repeat;
-  height: 32px;
-  padding-right: 10px;
-  font-family: Verdana, sans;
-  font-size: 10px;
-  color: black;
-  padding-left: 35px;
-  background-color: #fcfcfc;
-
-}
-
-a#keys:hover {
-  background-color: #f5f5f5;
-}
-
-a#keys span {
-  color: black;
-  border-left: 1px solid #cfcfcf;
-  padding-left: 8px;
-  line-height: 10px;
-  height: 10px;
-}
-
-a#keys:hover span {
-  color: #002ab3;
-}
-.right { float: right; }
-
 a#keys.enabled {
   background-color: white;
   font-size: 15px;
 }
 
 a#keys.enabled span { color: #002ab3; }
-a#collapse {
+
+/* Keybindings Pane */
+#keybindings a#collapse {
   left: 20px;
   bottom: 20px;
   position: absolute;
   font-family: Verdana;
-}
-a#keys.enabled:hover {
 }
 
 #keybindings.visible { display: table-cell; }
@@ -288,28 +299,18 @@ a#keys.enabled:hover {
 }
 
 #keybindings h2 {
+  display: block;
+  margin: 10px 0;
+  border-bottom: 1px solid #cfcfcf;
+
   font-size: 15px;
   line-height: 30px;
-  border-bottom: 1px solid #cfcfcf;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  display: block;
-  width: auto;
+
   color: #002ab3;
   font-family: Verdana, sans;
 }
 
-#keybindings .basic .left {
-  display: block;
-
-}
-#keybindings .basic .right {
-  display: block;
-}
-#keybindings .advanced {
-  display: none;
-}
-span.key {
+#keybindings span.key {
   border: 1px solid #cfcfcf;
   background: white;
   display: inline-block;
@@ -317,5 +318,4 @@ span.key {
   line-height: 18px;
   margin-top: 3px;
   font-size: 11px;
-
 }

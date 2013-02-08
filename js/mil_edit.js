@@ -341,16 +341,20 @@ var mil_edit = (function() {
   * ===================== */
   function mode() {
     if (!raw) {
-      var markdown = dump_markdown();
-      $(selector).children().first().replaceWith("<textarea id='raw'>");
-      $(selector).children().first().val(markdown);
-      $("#buttons").css('display', 'none');
-      $("#functions").css('display', 'none');
-      $("#mode").text("Edit Mode");
+      var timeout = 0;
+      if (kb) { timeout = 300; keybindings(); }
+      setTimeout(function() {
+        var markdown = dump_markdown();
+        $(selector).children().first().replaceWith("<textarea id='raw'>");
+        $(selector).children().first().val(markdown);
+        $("#buttons").css('display', 'none');
+        $("#mode").text("Editor Mode");
+
+      }, timeout);
       raw = true;
     } else if (raw) {
       raw = false;
-      $("#mode").text("Raw Markdown");
+      $("#mode").text("Markdown Mode");
       $("#buttons").css('display', 'block');
       $("#functions").css('display', 'block');
       var mark = $(selector).children().first().val();

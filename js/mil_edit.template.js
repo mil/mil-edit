@@ -1,5 +1,4 @@
 var template_buttons = ''.concat(
-  '<div class="top-bar">',
   '<div id="buttons">',
 
   '<a id="undent" title="< or Ctrl-&larr;" onclick="mil_edit.undent()"></a>',
@@ -8,9 +7,7 @@ var template_buttons = ''.concat(
   '<a id="bold" title="Ctrl-B" onclick="mil_edit.bold()"></a>',
   '<a id="italic" title="Ctrl-I" onclick="mil_edit.italic()"></a>',
 
-  '</div>',
   '<a id="keys" onclick="mil_edit.keybindings()"><span>Key Controls</span></a>',
-
   '</div>'
 );
 
