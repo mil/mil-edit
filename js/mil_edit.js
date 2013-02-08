@@ -372,10 +372,28 @@ var mil_edit = (function() {
   /* ===================
   * In Text Markdown Insertion
   * ===================== */
+  function surround_selection(prepend, append) {
+    var field = $("#active textarea")[0];
+    var emptySelection = field.selectionStart == field.selectionEnd ? true : false;
 
-  function bold() { insert("****"); focus.position_cursor_delta(-2); }
-  function italic() { insert("__"); focus.position_cursor_delta(-1); }
-  function link() { insert("[]()"); focus.position_cursor_delta(-3); }
+    var end = field.selectionEnd + append.length + prepend.length;
+    var newText = $(field).val();
+    newText = insert_at(newText, field.selectionStart, prepend);
+    newText = insert_at(newText, field.selectionEnd + prepend.length, append);
+    $(field).val(newText);
+    focus.position_cursor(emptySelection ? end - append.length : end);
+  }
+
+  function bold() {  
+    surround_selection("**", "**");
+  }
+  function italic() { 
+    surround_selection("_", "_"); 
+  }
+  function link() { 
+    surround_selection("[", "]()");
+    focus.position_cursor_delta(-2); 
+  }
 
 
   /* ===================
