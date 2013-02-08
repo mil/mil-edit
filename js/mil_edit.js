@@ -349,14 +349,12 @@ var mil_edit = (function() {
         $(selector).children().first().val(markdown);
         $("#buttons").css('display', 'none');
         $("#mode").text("Editor Mode");
-
       }, timeout);
       raw = true;
     } else if (raw) {
       raw = false;
       $("#mode").text("Markdown Mode");
       $("#buttons").css('display', 'block');
-      $("#functions").css('display', 'block');
       var mark = $(selector).children().first().val();
       load_markdown(mark);
     }

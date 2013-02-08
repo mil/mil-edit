@@ -242,9 +242,7 @@ div#editor #buttons {
   border: none; border-left: 1px solid #cfcfcf;
 }
 #buttons a#keys:hover span { color: #002ab3; }
-
 #buttons a#keys.enabled { font-size: 15px; }
-
 
 #buttons a#undent { margin-left: 0; background-image: url('../images/text_indent_remove.png'); }
 #buttons a#indent { background-image: url('../images/text_indent.png'); }
@@ -253,6 +251,9 @@ div#editor #buttons {
 #buttons a#link { background-image: url('../images/world_link.png'); }
 #buttons a#italic { background-image: url('../images/text_italic.png'); }
 #buttons a#bold { background-image: url('../images/text_bold.png'); }
+
+
+/* Keybindings Pane */
 #keybindings { 
   font-size: 12px;
   line-height: 20px;
@@ -273,15 +274,6 @@ div#editor #buttons {
   font-family: Verdana, sans;
   height: 360px;
 }
-
-a#keys.enabled {
-  background-color: white;
-  font-size: 15px;
-}
-
-a#keys.enabled span { color: #002ab3; }
-
-/* Keybindings Pane */
 #keybindings a#collapse {
   left: 20px;
   bottom: 20px;
