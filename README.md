@@ -18,9 +18,12 @@ All Keybindings
     * Vim-Esque: [Ctrl] [Shift] H L
 - **Shifting**
     * [Shift] &larr; &uarr; &darr; &rarr;
+- **Quick Delete Backwards**
+    * [Ctrl] [Shift] [Delete]
 - **Quick Indent Insert**
-    * [Enter] [Enter]
     * [Shift] [Enter]
+- **Quick New Child**
+    * [Enter] [Enter]
 - **Markdown Insertion Styling**
     * Bold: [Ctrl] B
     * Italic: [Ctrl] I

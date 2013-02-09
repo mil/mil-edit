@@ -90,6 +90,7 @@ var mil_edit = (function() {
     text_attributes(true);
     focus.set($(selector + " li").last());
     insert_below();
+    _(10).times(function(){focus.undent();});
     return true;
   }
 
