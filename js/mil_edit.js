@@ -467,10 +467,10 @@ var mil_edit = (function() {
     // Control combos
     if (k.ctrlKey) {
       switch (k.keyCode) {
-      case 73: italic(); return;
-      case 66: bold(); return;
-      case 89: link(); return;
-      case 88: clear(); return;
+      case 73: italic(); return false;
+      case 66: bold(); return false;
+      case 89: link(); return false;
+      case 88: clear(); return false;
       }
     }
 

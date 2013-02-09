@@ -126,7 +126,6 @@ div#editor #list {
 
   cursor: pointer;
   -webkit-user-select: none;
-  -moz-user-select: none;
   -ms-user-select: none;
 }
 
