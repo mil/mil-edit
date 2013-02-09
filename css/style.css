@@ -51,6 +51,7 @@ div#editor {
   width: 100%;
   overflow: hidden;
   background: white;
+  border: 1px solid #cfcfcf;
 }
 
 div#editor div#area {
@@ -58,7 +59,6 @@ div#editor div#area {
   overflow: hidden;
   display: table;
   width: 100%;
-  border: 1px solid #cfcfcf;
   background: white;
 }
 
@@ -180,9 +180,7 @@ div#editor #buttons {
   -moz-user-select: none;
   -ms-user-select: none;
 
-
-  border: 1px solid #cfcfcf;
-  border-bottom: none;
+  border-bottom: 1px solid #cfcfcf;
 
   width: auto;
   clear: both;
@@ -286,15 +284,23 @@ div#editor #buttons {
   padding-top: 0;
   margin-left: 20px;
   background: white;
+
   position: relative;
   font-family: Verdana, sans;
   height: 360px;
 }
+
+#keybindings .basic {
+  position: relative;
+  height: 100%;
+}
 #keybindings a#collapse {
-  left: 20px;
   bottom: 20px;
-  position: absolute;
+  left: 0;
+  vertical-align: bottom;
+  float: left;
   font-family: Verdana;
+  position: absolute;
 }
 
 

@@ -28,8 +28,9 @@ var template_keybindings = ''.concat(
   '<h2>Moving Around</h2>',
   '<span class="key">&uarr;</span> and <span class="key">&darr;</span> moves between lines<br/>',
   '<span class="key">Shift</span> <span class="key">&uarr;</span> <span class="key">&darr;</span> shifts the line',
-  '</div>',
+
   '<a id="collapse" title="Hide this Help Pane" onclick="mil_edit.keybindings()">Collapse &rarr;</a>',
+  '</div>',
 
   '</div>'
 );
