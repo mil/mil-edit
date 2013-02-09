@@ -207,6 +207,19 @@ div#editor #buttons {
   background-color: #e6e6e6;
 }
 
+#buttons .separator {
+  display: block;
+  float: left;
+  height: 15px;
+  border-left: 1px solid #cfcfcf;
+  width: 0px;
+  margin-top: 10px;
+  margin-left: 6px;
+  margin-right: 6px;
+
+}
+
+
 
 #buttons a#keys { 
   float: right;
