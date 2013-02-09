@@ -129,14 +129,16 @@ div#editor #list {
 
 
 #editor ul { background: #ffffff; padding-left: 0;}
-#editor ul ul { 
-  background: #f0f0f0; 
-}
+#editor ul ul { background: #f0f0f0; }
 #editor ul ul ul { background: #ffffff; }
 #editor ul ul ul ul { background: #f0f0f0; }
-#editor ul ul ul ul  ul { background: #f0f0f0; }
+#editor ul ul ul ul ul { background: #ffffff; }
 #editor ul ul ul ul ul ul { background: #f0f0f0; }
-
+#editor ul ul ul ul ul ul ul { background: #ffffff; }
+#editor ul ul ul ul ul ul ul ul { background: #f0f0f0; }
+#editor ul ul ul ul ul ul ul ul ul { background: #ffffff; }
+#editor ul ul ul ul ul ul ul ul ul ul { background: #f0f0f0; }
+#editor ul ul ul ul ul ul ul ul ul ul ul { background: #ffffff; }
 
 #editor ul li { font-size: 14px; }
 
@@ -261,8 +263,6 @@ div#editor #buttons {
 
 #buttons a#undent { margin-left: 0; background-image: url('../images/text_indent_remove.png'); }
 #buttons a#indent { background-image: url('../images/text_indent.png'); }
-#buttons a#up { background-image: url('../images/arrow_up.png'); }
-#buttons a#down { background-image: url('../images/arrow_down.png'); }
 #buttons a#link { background-image: url('../images/world_link.png'); }
 #buttons a#italic { background-image: url('../images/text_italic.png'); }
 #buttons a#bold { background-image: url('../images/text_bold.png'); }
