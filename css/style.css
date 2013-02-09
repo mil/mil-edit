@@ -12,6 +12,9 @@ html body {
 .left { float: left; }
 
 #application { padding: 50px; }
+#fork-me img { 
+  position: absolute; top: 0; right: 0; border: 0;
+}
 
 h1 { 
   font-size: 60px; 
