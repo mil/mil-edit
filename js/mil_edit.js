@@ -1,6 +1,6 @@
 var mil_edit = (function() {
   var root = "#editor";
-  var selector = root + " #list";
+  var selector = root + " #area #list";
   var raw = false; // Raw mode enabled
   var kb = false;
   var content  = "";
@@ -82,7 +82,7 @@ var mil_edit = (function() {
       spaces = leading;
     });
     if ($(root).children().size() == 0) {
-      load_markdown("- Invalid Raw Markdown\n  * mil edit only supports a single list");
+      load_markdown("- **Invalid** Raw Markdown List\n  * mil edit only supports a single _well-formatted_ Markdown list");
       return;
     }
 
@@ -321,17 +321,8 @@ var mil_edit = (function() {
   * in previous(0)/next(1) directions 
   */
 
-  function insert(c) { 
-    var old = $("#active textarea").val();
-    var cursor = $("#active textarea")[0].selectionStart;
-
-    $("#active textarea").val(insert_at(old, cursor, c));
-    focus.position_cursor_delta(c.length);
-  }
-
-
   /* ===================
-  * Set Mode and Clear
+   Set Mode and Clear
   * ===================== */
   function mode() {
     if (!raw) {
@@ -411,7 +402,6 @@ var mil_edit = (function() {
       }
       return false; 
     }
-
     return true; // Default backspace
   }
 
@@ -457,11 +447,12 @@ var mil_edit = (function() {
     if (k.keyCode == 39 && k.shiftKey) { focus.indent(); }
 
     // VIM-Esque
-    if (k.keyCode == 74 && k.shiftKey & k.ctrlKey) { focus.set_delta(1); return false; }
-    if (k.keyCode == 75 && k.shiftKey & k.ctrlKey) { focus.set_delta(-1); return false;}
-    if (k.keyCode == 72 && k.shiftKey & k.ctrlKey) { focus.undent(); return false;}
-    if (k.keyCode == 76 && k.shiftKey & k.ctrlKey) { focus.indent(); return false;}
+    if (k.keyCode == 74 && k.shiftKey && k.ctrlKey) { focus.set_delta(1); return false; }
+    if (k.keyCode == 75 && k.shiftKey && k.ctrlKey) { focus.set_delta(-1); return false;}
+    if (k.keyCode == 72 && k.shiftKey && k.ctrlKey) { focus.undent(); return false;}
+    if (k.keyCode == 76 && k.shiftKey && k.ctrlKey) { focus.indent(); return false;}
 
+    if (k.keyCode == 191 && k.shiftKey && k.ctrlKey) { keybindings(); }
 
     console.log(k);
 
@@ -476,6 +467,13 @@ var mil_edit = (function() {
     }
 
     return true;
+  };
+
+  event_handlers.key_up = function(e) {
+    if (!raw) {
+      clean_tree(); 
+      focus.adjust_rows();
+    }
   };
 
   event_handlers.mouse_down = function(e) {
@@ -496,15 +494,14 @@ var mil_edit = (function() {
 
 
   /* ===================
-  * It's Alive
+  * Setup Things
   * ===================== */
   function load_template() {
-    console.log(editor_template);
     $(root).html(editor_template);
   }
   function setup_bindings() {
     $(document).on('keydown', event_handlers.key_down);
-    $(document).on('keyup', function() { clean_tree(); focus.adjust_rows()});
+    $(document).on('keyup', event_handlers.key_up);
     $(document).on('mousedown', "li", event_handlers.mouse_down);
   }
 

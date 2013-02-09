@@ -155,8 +155,6 @@ div#editor #list {
   width: 100%;
   border: none;
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-  border-sizing: border-box;
-  -webkit-border-sizing: border-box;
   padding: 10px;
   background: white;
   color: black;
@@ -298,6 +296,7 @@ div#editor #buttons {
   position: absolute;
   font-family: Verdana;
 }
+
 
 #keybindings.visible { display: table-cell; }
 
