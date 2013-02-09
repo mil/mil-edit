@@ -11,7 +11,7 @@ html body {
 .right { float: right; }
 .left { float: left; }
 
-#application { padding: 20px; }
+#application { padding: 50px; }
 
 h1 { 
   font-size: 60px; 
@@ -29,7 +29,7 @@ hr {
   height: 4px;
   display: block;
   background-color: #f0f0f0;
-  margin: 10px 0;
+  margin: 18px 0;
 }
 
 
@@ -216,7 +216,6 @@ div#editor #buttons {
   margin-top: 10px;
   margin-left: 6px;
   margin-right: 6px;
-
 }
 
 

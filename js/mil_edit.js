@@ -445,13 +445,10 @@ var mil_edit = (function() {
 
     // Enter
     if (k.keyCode == 13) {
-      insert_below(); 
       if (k.shiftKey) { focus.indent(); } 
-      if ($("#active").prev().size() > 0 && $("#active").prev().html().length == 0) {
-        focus.indent();
-      }
+      if ($("#active textarea").val() == "") { focus.indent(); }
+      insert_below(); 
       clean_tree();
-
       return false;
     }
 
@@ -459,8 +456,12 @@ var mil_edit = (function() {
     if (k.keyCode == 37 && k.shiftKey) { focus.undent(); }
     if (k.keyCode == 39 && k.shiftKey) { focus.indent(); }
 
+    // VIM-Esque
     if (k.keyCode == 74 && k.shiftKey & k.ctrlKey) { focus.set_delta(1); return false; }
     if (k.keyCode == 75 && k.shiftKey & k.ctrlKey) { focus.set_delta(-1); return false;}
+    if (k.keyCode == 72 && k.shiftKey & k.ctrlKey) { focus.undent(); return false;}
+    if (k.keyCode == 76 && k.shiftKey & k.ctrlKey) { focus.indent(); return false;}
+
 
     console.log(k);
 
