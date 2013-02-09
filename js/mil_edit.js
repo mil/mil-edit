@@ -193,10 +193,17 @@ var mil_edit = (function() {
   focus.shift = function(delta) {
     if (raw) { return; }
     var nextItem = directional_find("li", $("#active"), delta == -1 ? -1 : 1);
-    if (!nextItem.is("li")) { return false; }
+    console.log(nextItem);
+    if (!nextItem.is("li")) { 
+      $("#active").insertAfter($(selector).children().children().last());
+      return false; 
+    }
 
     var bros = are_brothers($("#active"), $(nextItem)); 
+    console.log(bros);
     if (delta == -1 && bros || delta == 1 && !bros) {
+      $("#active").insertBefore($(nextItem));
+    } else if ($("#active").next().size() == 0 && $(nextItem).prev().size() == 0 && $(nextItem).parent().parent().is("div")) {
       $("#active").insertBefore($(nextItem));
     } else {
       $("#active").insertAfter($(nextItem));
