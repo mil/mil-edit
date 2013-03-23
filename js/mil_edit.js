@@ -127,10 +127,10 @@ var mil_edit = (function() {
       range.move('character', position);
       range.select();
     } else {
-      field.focus();
       if (field.selectionStart != undefined) {
         field.setSelectionRange(position, position);
       }
+      field.focus();
     }
   }
 
@@ -158,7 +158,6 @@ var mil_edit = (function() {
     }
 
     while (selector.is('ul')) {
-      console.log("selector")
       selector = $(selector.children().first);
     }
 
@@ -189,14 +188,12 @@ var mil_edit = (function() {
   focus.shift = function(delta) {
     if (raw) { return; }
     var nextItem = directional_find("li", $("#active"), delta == -1 ? -1 : 1);
-    console.log(nextItem);
     if (!nextItem.is("li")) { 
       $("#active").insertAfter($(selector).children().children().last());
       return false; 
     }
 
     var bros = are_brothers($("#active"), $(nextItem)); 
-    console.log(bros);
     if (delta == -1 && bros || delta == 1 && !bros) {
       $("#active").insertBefore($(nextItem));
     } else if ($("#active").next().size() == 0 && $(nextItem).prev().size() == 0 && $(nextItem).parent().parent().is("div")) {
@@ -263,7 +260,6 @@ var mil_edit = (function() {
     if (c.is("div")) { return false; }
     if (!c.is("li") && !c.is("ul")) { return false; }
 
-    // Let us
     c = direction == 1 ? c.next() : c.prev();
     while (c.children(tag).size() != 0 ) {
       c = (direction == 1) ? c.children(tag).first() : c.children(tag).last();
@@ -458,8 +454,6 @@ var mil_edit = (function() {
     if (k.keyCode == 76 && k.shiftKey && k.ctrlKey) { focus.indent(); return false;}
 
     if (k.keyCode == 191 && k.shiftKey && k.ctrlKey) { keybindings(); }
-
-    console.log(k);
 
     // Control combos
     if (k.ctrlKey) {
