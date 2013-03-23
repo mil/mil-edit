@@ -3,6 +3,7 @@ var mil_edit = (function() {
   var selector = root + " #area #list";
   var raw = false; // Raw mode enabled
   var kb = false;
+  var animating = false;
   var content  = "";
 
   /* ===================
@@ -29,17 +30,25 @@ var mil_edit = (function() {
   }
 
   function keybindings() {
+    if (animating) { return false; }
     if (kb) {
+      animating = true;
       $("#keys").animate({ 'width': 'auto' }, { duration: 150 }).removeClass("enabled"); 
       $(root + " #keybindings").animate({ opacity: 0 }, {
-        complete : function() { $(root + " #keybindings").removeClass("visible"); }
+        complete : function() { 
+          $(root + " #keybindings").removeClass("visible"); 
+          animating = false;
+        }
       });
       kb = false;
     } else {
+      animating = true;
       $("#keys").animate({ 'width': '215px' }, { duration: 150 }).addClass('enabled');
       $(root + " #keybindings").addClass("visible").animate(
-        { opacity: 1.0 }, { duration: 600, easing: 'ease-in' }
-      );
+        { opacity: 1.0 }, { 
+        duration: 600, easing: 'ease-in',
+        complete : function() { animating = false; }
+      });
       kb = true;
     }
   }
