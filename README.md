@@ -11,9 +11,8 @@ All Keybindings
 - **Navigation**
     * &larr; &uarr; &darr; &rarr;
     * Vim-Esque: [Ctrl] [Shift] J K
-    * [Tab], [Shift] [Tab]
 - **Indentation**
-    * < >
+    * [Tab], [Shift] [Tab]
     * [Shift] &larr; &rarr; 
     * Vim-Esque: [Ctrl] [Shift] H L
 - **Shifting**
