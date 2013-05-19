@@ -486,7 +486,6 @@ var mil_edit = (function() {
 
   event_handlers.mouse_down = function(e) {
     var t = $(e.target);
-    if ($(t).is("a") || $(t).is("textarea")) { return true; }
 
     if (t.is("strong") || t.is("em")) { 
       t = t.parent();
@@ -496,6 +495,11 @@ var mil_edit = (function() {
         t = t.children().first();
       }
     }
+
+    if ($(t).is("a") || $(t).is("textarea")) { return false; }
+
+
+
     focus.set(t); clean_tree();
     return false;
   };
