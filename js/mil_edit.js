@@ -432,7 +432,7 @@ var mil_edit = (function() {
 
     // Tab
     if (k.keyCode == 9) {
-      k.shiftKey ? focus.set_delta(-1) : focus.set_delta(1); return false; 
+      k.shiftKey ? focus.undent() : focus.indent(); return false; 
     }
 
     // Arrows up and down
@@ -497,8 +497,6 @@ var mil_edit = (function() {
     }
 
     if ($(t).is("a") || $(t).is("textarea")) { return false; }
-
-
 
     focus.set(t); clean_tree();
     return false;

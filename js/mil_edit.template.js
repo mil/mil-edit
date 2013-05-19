@@ -22,8 +22,8 @@ var template_keybindings = ''.concat(
 
 
   '<h2>Changing Indentation</h2>',
-  'Indentation: <span class="key">&gt;</span> or <span class="key">Shift</span> <span class="key">&rarr;</span><br/>',
-  'Undentation: <span class="key">&lt;</span> or <span class="key">Shift</span> <span class="key">&larr;</span>',
+  'Indentation: <span class="key">Tab</span><br/>',
+  'Undentation: <span class="key">Shift</span> <span class="key">Tab</span>',
 
   '<h2>Moving Around</h2>',
   '<span class="key">&uarr;</span> and <span class="key">&darr;</span> moves between lines<br/>',
