@@ -487,6 +487,9 @@ var mil_edit = (function() {
   event_handlers.mouse_down = function(e) {
     var t = $(e.target);
 
+    // Highlighting
+    if (t.is("textarea")) { return true; }
+
     if (t.is("strong") || t.is("em")) { 
       t = t.parent();
     }  else {
