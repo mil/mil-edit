@@ -1,10 +1,16 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('../ttf/roboto-light.ttf');
+}
+
 html body {
   padding-top: 0;
   background: #fff;
   font-size: 13px;
-  font-family: monospace;
+  font-family: 'Roboto';
   background: url('../images/linedpaper.png');
 } 
+
 /* mil-edit Display Page specific 
  * You don't need this stuff if you drop mil edit somewhere
  * */
@@ -146,7 +152,10 @@ div#editor #list {
 #editor ul ul ul ul ul ul ul ul ul ul { background: #f0f0f0; }
 #editor ul ul ul ul ul ul ul ul ul ul ul { background: #ffffff; }
 
-#editor ul li { font-size: 14px; }
+#editor ul li { 
+  font-size: 18px; 
+  line-height: 25px; 
+}
 
 #editor strong, b { font-weight: bold; }
 #editor em, i { font-style: italic;}
@@ -157,7 +166,7 @@ div#editor #list {
   min-height: 300px;
   width: 100%;
   border: none;
-  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  font-family: "Roboto", "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
   padding: 10px;
   background: white;
   color: black;
