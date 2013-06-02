@@ -221,7 +221,7 @@ var mil_edit = (function() {
     var text = $("#active").text();
     /* Ensure not at start of list */
     if ($("#active").prev().size() == 0) { return; }
-    $("#active").wrap("ul").parent().wrap("li");
+    $("#active").wrap("<li><ul>");
 
     clean_tree();
     $("#active textarea")[0].focus();
