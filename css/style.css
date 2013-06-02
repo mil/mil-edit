@@ -99,6 +99,10 @@ div#editor #list {
   white-space:pre;
 }
 
+::selection, ::-moz-selection, ::-webkit-selection {
+  background: #fffde0;
+}
+
 #editor ul {
 	margin: 0;
   display: block;
