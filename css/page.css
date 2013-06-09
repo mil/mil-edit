@@ -1,0 +1,45 @@
+html body {
+  padding-top: 0;
+  background: #fff;
+  font-size: 13px;
+  font-family: monospace;
+  background: url('../images/linedpaper.png');
+} 
+.right { float: right; }
+.left { float: left; }
+
+#application { padding: 50px; }
+#fork-me img { 
+  position: absolute; top: 0; right: 0; border: 0;
+}
+
+h1 { 
+  font-size: 60px; 
+  text-align: left;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+}
+
+#footer {
+  text-align: left;
+  line-height: 20px;
+}
+
+hr {
+  border: none;
+  height: 4px;
+  display: block;
+  background-color: #f0f0f0;
+  margin: 18px 0;
+}
+
+a {
+  text-decoration: none;
+  padding: 0 2px;
+  color: #002ab3;
+  cursor: pointer;
+}
+a:hover { color: white; background-color: #002ab3; }
+
+::selection, ::-moz-selection, ::-webkit-selection {
+  background: #fffde0;
+}

@@ -1,60 +1,28 @@
-html body {
-  padding-top: 0;
-  background: #fff;
-  font-size: 13px;
-  font-family: monospace;
-  background: url('../images/linedpaper.png');
-} 
 /* mil-edit Display Page specific 
  * You don't need this stuff if you drop mil edit somewhere
  * */
-.right { float: right; }
-.left { float: left; }
 
-#application { padding: 50px; }
-#fork-me img { 
-  position: absolute; top: 0; right: 0; border: 0;
-}
+/* mil-edit Editor Area 
+ * For styling the lists, textarea, etc... */
 
-h1 { 
-  font-size: 60px; 
-  text-align: left;
-  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-}
-
-#footer {
-  text-align: left;
-  line-height: 20px;
-}
-
-hr {
-  border: none;
-  height: 4px;
-  display: block;
-  background-color: #f0f0f0;
-  margin: 18px 0;
-}
-
-
-a {
+#editor a {
   text-decoration: none;
   padding: 0 2px;
   color: #002ab3;
   cursor: pointer;
 }
-a:hover { color: white; background-color: #002ab3; }
+#editor a:hover { color: white; background-color: #002ab3; }
 
-
-/* mil-edit Editor Area 
- * For styling the lists, textarea, etc... */
-div#editor { 
+#editor { 
   width: 100%;
   overflow: hidden;
   background: white;
   border: 1px solid #cfcfcf;
+  font-size: 13px;
+  font-family: monospace;
 }
 
-div#editor div#area {
+#editor div#area {
   clear: both;
   overflow: hidden;
   display: table;
@@ -62,7 +30,7 @@ div#editor div#area {
   background: white;
 }
 
-div#editor #list {
+#editor #list {
   display: table-cell;
   vertical-align: top;
   height: 100%;
@@ -99,7 +67,7 @@ div#editor #list {
   white-space:pre;
 }
 
-::selection, ::-moz-selection, ::-webkit-selection {
+#editor ::selection, #editor ::-moz-selection, #editor ::-webkit-selection {
   background: #fffde0;
 }
 
@@ -167,10 +135,7 @@ div#editor #list {
 }
 
 
-.clear { clear : both; }
-
 /* Buttons Bar at the top of the editor */
-
 div#editor #buttons {
   height: 35px;
 
@@ -190,7 +155,7 @@ div#editor #buttons {
 }
 
 
-#buttons a {
+#editor #buttons a {
   width: 20px;
   height: 22px;
 
@@ -206,12 +171,12 @@ div#editor #buttons {
   float: left;
 }
 
-#buttons a:hover {
+#editor #buttons a:hover {
   border: 1px solid #cfcfcf;
   background-color: #e6e6e6;
 }
 
-#buttons .separator {
+#editor #buttons .separator {
   display: block;
   float: left;
   height: 15px;
@@ -224,7 +189,7 @@ div#editor #buttons {
 
 
 
-#buttons a#keys { 
+#editor #buttons a#keys { 
   float: right;
   display: inline-block;
   width: auto;
@@ -248,7 +213,7 @@ div#editor #buttons {
   border-left: 1px solid #cfcfcf;
 }
 
-#buttons a#keys span {
+#editor #buttons a#keys span {
   color: #4d4d4d;
   border-left: 1px solid #cfcfcf;
   padding-left: 8px;
@@ -257,21 +222,21 @@ div#editor #buttons {
 }
 
 
-#buttons a#keys:hover {
+#editor #buttons a#keys:hover {
   border: none; border-left: 1px solid #cfcfcf;
 }
-#buttons a#keys:hover span { color: #002ab3; }
-#buttons a#keys.enabled { font-size: 15px; }
+#editor #buttons a#keys:hover span { color: #002ab3; }
+#editor #buttons a#keys.enabled { font-size: 15px; }
 
-#buttons a#undent { margin-left: 0; background-image: url('../images/text_indent_remove.png'); }
-#buttons a#indent { background-image: url('../images/text_indent.png'); }
-#buttons a#link { background-image: url('../images/world_link.png'); }
-#buttons a#italic { background-image: url('../images/text_italic.png'); }
-#buttons a#bold { background-image: url('../images/text_bold.png'); }
+#editor #buttons a#undent { margin-left: 0; background-image: url('../images/text_indent_remove.png'); }
+#editor #buttons a#indent { background-image: url('../images/text_indent.png'); }
+#editor #buttons a#link { background-image: url('../images/world_link.png'); }
+#editor #buttons a#italic { background-image: url('../images/text_italic.png'); }
+#editor #buttons a#bold { background-image: url('../images/text_bold.png'); }
 
 
 /* Keybindings Pane */
-#keybindings { 
+#editor #keybindings { 
   font-size: 12px;
   line-height: 20px;
   text-align: left;
@@ -293,11 +258,11 @@ div#editor #buttons {
   height: 360px;
 }
 
-#keybindings .basic {
+#editor #keybindings .basic {
   position: relative;
   height: 100%;
 }
-#keybindings a#collapse {
+#editor #keybindings a#collapse {
   bottom: 20px;
   left: 0;
   vertical-align: bottom;
@@ -306,17 +271,16 @@ div#editor #buttons {
   position: absolute;
 }
 
+#editor #keybindings.visible { display: table-cell; }
 
-#keybindings.visible { display: table-cell; }
-
-#keybindings h2 a {
+#editor #keybindings h2 a {
   font-size: 11px;
   float: right;
   line-height: 16px;
   margin-top: 8px;
 }
 
-#keybindings h2 {
+#editor #keybindings h2 {
   display: block;
   margin: 10px 0;
   border-bottom: 1px solid #cfcfcf;
@@ -328,7 +292,7 @@ div#editor #buttons {
   font-family: Verdana, sans;
 }
 
-#keybindings span.key {
+#editor #keybindings span.key {
   border: 1px solid #cfcfcf;
   background: white;
   display: inline-block;
