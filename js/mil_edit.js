@@ -110,22 +110,19 @@ var mil_edit = (function() {
 
     var ret = "";
     _.each($(selector + " li"), function (l) {
-      text = "";
+      // just a wrapper li
+      if ($(l).children("ul").size() != 0) { return; }
 
-      if ($(l).attr("id") == "active") {
-        text = markdown.toHTML($("#active textarea").val());
-      } else {
-        var level = $(l).parents("ul").size() -1;
-        if ($(l).children("ul").size() == 0) {
-          var pre = "";
-          _.times(level * tabSize, function () { pre = pre + " "; });
-          pre += (level % 2 === 0) ?  "- " : "* ";
-          text = $(l).html();
-        } else {
-          text = false;
-        }
-      }
-      if (text) { ret += pre + toMarkdown(text) + "\n"; }
+      var text = "", pre = ""; 
+      var level = $(l).parents("ul").size() -1;
+      _.times(level * tabSize, function () { pre = pre + " "; });
+      pre += (level % 2 === 0) ?  "- " : "* ";
+
+      text =  ($(l).attr("id") == "active") ? 
+        markdown.toHTML($("#active textarea").val()) :
+        text = $(l).html();
+
+      ret += pre + toMarkdown(text) + "\n";
     });
     return ret;
   };
